@@ -1,0 +1,9 @@
+# Dependency directories
+node_modules/
+
+# Documentation and design files
+*.pdf
+*.md
+
+# Environment and build files
+.env

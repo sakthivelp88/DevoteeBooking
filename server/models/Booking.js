@@ -1,0 +1,123 @@
+import mongoose from "mongoose";
+
+const bookingSchema = new mongoose.Schema(
+  {
+    bookingNumber: {
+      type: String,
+      unique: true,
+      default: () => `BK-${Date.now()}`,
+    },
+
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    temple: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Temple",
+      required: true,
+    },
+
+    darshanType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "DarshanType",
+      required: true,
+    },
+
+    ticket: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Ticket",
+      required: true,
+    },
+
+    reservation: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Reservation",
+      default: null,
+    },
+
+    quantity: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+
+    ticketPrice: {
+      type: Number,
+      required: true
+    },
+
+    totalAmount: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+
+    paymentMethod: {
+      type: String,
+      default: "Razorpay",
+    },
+
+    paymentStatus: {
+      type: String,
+      enum: ["Pending", "Paid", "Failed", "Refunded"],
+      default: "Pending",
+    },
+
+    bookingStatus: {
+      type: String,
+      enum: [
+        "Pending",
+        "Confirmed",
+        "Cancelled",
+        "Completed",
+      ],
+      default: "Pending",
+    },
+
+    paymentReference: {
+      type: String,
+      default: "",
+    },
+
+    razorpayOrderId: {
+      type: String,
+      default: "",
+    },
+
+    razorpayPaymentId: {
+      type: String,
+      default: "",
+    },
+
+    qrCode: {
+      type: String,
+      default: "",
+    },
+    remarks: {
+      type: String,
+      default: ""
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+/* -------------------- Middleware -------------------- */
+
+bookingSchema.index({
+  bookingStatus: 1
+});
+
+bookingSchema.index({
+  paymentStatus: 1
+});
+
+bookingSchema.index({
+  createdAt: -1
+});
+
+export default mongoose.model("Booking", bookingSchema);
