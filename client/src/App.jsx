@@ -18,6 +18,7 @@ import TempleDetails from "./pages/user/TempleDetails";
 import Tickets from "./pages/user/Tickets";
 import MyBookings from "./pages/user/MyBookings";
 import BookingDetails from "./pages/user/BookingDetails";
+import BookingSuccess from "./pages/user/BookingSuccess";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -73,6 +74,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Tickets />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/booking-success/:id"
+            element={
+              <ProtectedRoute>
+                <BookingSuccess />
               </ProtectedRoute>
             }
           />

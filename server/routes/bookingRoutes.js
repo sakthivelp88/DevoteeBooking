@@ -3,18 +3,24 @@ import express from "express";
 import { auth } from "../middleware/auth.js";
 import { admin } from "../middleware/admin.js";
 
-import {
-  myBookings,
+import {  
   getAdminBookings,
   getAdminBookingById,
   updateAdminBookingStatus,
 } from "../controllers/adminBookingController.js";
+
+import {
+  myBookings,
+  getBookingById,
+} from "../controllers/bookingController.js";
+
 
 const router = express.Router();
 
 /* ================= User ================= */
 
 router.get("/my", auth, myBookings);
+router.get("/:id", auth, getBookingById);
 
 /* ================= Admin ================= */
 

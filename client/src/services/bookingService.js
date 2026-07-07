@@ -13,6 +13,11 @@ export const bookTicket = async (ticketId, quantity) => {
   return data;
 };
 
+export const getBookingById = async (id) => {
+  const { data } = await api.get(`/bookings/${id}`);
+  return data;
+};
+
 export const getMyBookings = async () => {
   const { data } = await api.get("/bookings/my");
 

@@ -51,6 +51,15 @@ const reservationSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    contact: {
+      type: Object,
+      required: true,
+    },
+
+    devotees: {
+      type: Array,
+      required: true,
+    },
   },
   {
     timestamps: true,

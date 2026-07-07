@@ -6,30 +6,6 @@ import {
   updateBookingStatus,
 } from "../services/adminBookingService.js";
 
-// Logged-in user's bookings
-export const myBookings = async (req, res) => {
-  try {
-    const bookings = await Booking.find({
-      user: req.session.user.id,
-    })
-      .populate("temple", "name")
-      .populate("darshanType", "name fee")
-      .populate("ticket")
-      .sort({ createdAt: -1 });
-
-    return res.json({
-      success: true,
-      message: "Bookings fetched successfully.",
-      total: bookings.length,
-      bookings,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
 
 // Admin - Booking List
 export const getAdminBookings = async (req, res) => {
