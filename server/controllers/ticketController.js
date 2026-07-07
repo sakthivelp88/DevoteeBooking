@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 import Ticket from "../models/Ticket.js";
 import { buildSearch } from "../utils/ticketSearch.js";
 import { getPagination } from "../utils/pagination.js";
@@ -31,6 +33,8 @@ export const getTickets = async (req, res) => {
       sortOrder = "asc",
       page = 1,
       limit = 10,
+      templeId,
+      darshanTypeId,
     } = req.query;
 
     const { currentPage, pageSize, skip } = getPagination(page, limit);
@@ -56,6 +60,22 @@ export const getTickets = async (req, res) => {
       { $unwind: "$darshanType" },
     ];
 
+    const match = {};
+
+    if (templeId) {
+      match.temple = new mongoose.Types.ObjectId(templeId);
+    }
+
+    if (darshanTypeId) {
+      match.darshanType = new mongoose.Types.ObjectId(darshanTypeId);
+    }
+
+    if (Object.keys(match).length > 0) {
+      pipeline.unshift({
+        $match: match,
+      });
+    }
+
     const searchStage = buildSearch(search);
 
     if (searchStage) {
@@ -65,7 +85,7 @@ export const getTickets = async (req, res) => {
     const sortField = {
       date: "date",
       createdAt: "createdAt",
-      amount: "amount",
+      price: "price",
     }[sortBy] || "date";
 
     pipeline.push({

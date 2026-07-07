@@ -17,6 +17,7 @@ import Dashboard from "./pages/user/Dashboard";
 import TempleDetails from "./pages/user/TempleDetails";
 import Tickets from "./pages/user/Tickets";
 import MyBookings from "./pages/user/MyBookings";
+import BookingDetails from "./pages/user/BookingDetails";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -81,6 +82,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <MyBookings />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/booking"
+            element={
+              <ProtectedRoute>
+                <BookingDetails />
               </ProtectedRoute>
             }
           />
