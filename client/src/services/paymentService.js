@@ -1,36 +1,20 @@
-import axios from "axios";
+import api from "./api";
 
-const API =
-  "http://localhost:5000/api/payment";
-
-export const createOrder = async (
-  ticketId,
-  quantity
-) => {
-  const response = await axios.post(
-    `${API}/create-order`,
-    {
-      ticketId,
-      quantity,
-    },
-    {
-      withCredentials: true,
-    }
+export const createOrder = async (payload) => {
+   console.log("paymentService payload:", payload);
+  const { data } = await api.post(
+    "/payment/create-order",
+    payload
   );
 
-  return response.data;
+  return data;
 };
 
-export const verifyPayment = async (
-  paymentData
-) => {
-  const response = await axios.post(
-    `${API}/verify`,
-    paymentData,
-    {
-      withCredentials: true,
-    }
+export const verifyPayment = async (payload) => {
+  const { data } = await api.post(
+    "/payment/verify",
+    payload
   );
 
-  return response.data;
+  return data;
 };

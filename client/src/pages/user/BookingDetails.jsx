@@ -57,10 +57,7 @@ function BookingDetails() {
     };
 
     const handleContinue = async () => {
-        const validationError = validateBooking(
-            contact,
-            devotees
-        );
+        const validationError = validateBooking(contact, devotees);
 
         if (validationError) {
             toast.error(validationError);
@@ -70,19 +67,27 @@ function BookingDetails() {
         try {
             setLoading(true);
 
-            const data = await createOrder({
+            const payload = {
                 ticketId: ticket._id,
                 quantity,
                 contact,
                 devotees,
-            });
+            };
+
+            console.log("BookingDetails payload:", payload);
+
+            const data = await createOrder(payload);
 
             openRazorpay({
                 order: data.order,
                 user,
                 onSuccess: handlePaymentSuccess,
             });
+
         } catch (error) {
+            console.error("Create Order Error:", error);
+            console.error("Response:", error.response?.data);
+
             toast.error(
                 error.response?.data?.message ||
                 "Unable to create order."

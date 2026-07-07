@@ -6,6 +6,9 @@ import Booking from "../models/Booking.js";
 import Reservation from "../models/Reservation.js";
 
 export const createOrder = async (req, res) => {
+  console.log("Session:", req.session);
+  console.log("User:", req.session?.user);
+
   try {
     const {
       ticketId,
@@ -14,7 +17,12 @@ export const createOrder = async (req, res) => {
       devotees,
     } = req.body;
 
+    console.log("Request Body:", req.body);
+
+
     const ticket = await Ticket.findById(ticketId);
+
+    console.log("Ticket:", ticket);
 
     if (!ticket) {
       return res.status(404).json({
@@ -43,6 +51,8 @@ export const createOrder = async (req, res) => {
         currency: "INR",
       });
 
+    console.log("Order:", order);
+
     const reservation = await Reservation.create({
       userId: req.session.user.id,
       ticketId,
@@ -59,6 +69,7 @@ export const createOrder = async (req, res) => {
     });
 
   } catch (error) {
+      console.error("Create Order Error:", error);
     res.status(500).json({
       message: error.message,
     });
