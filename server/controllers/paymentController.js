@@ -7,7 +7,12 @@ import Reservation from "../models/Reservation.js";
 
 export const createOrder = async (req, res) => {
   try {
-    const { ticketId, quantity } = req.body;
+    const {
+      ticketId,
+      quantity,
+      contact,
+      devotees,
+    } = req.body;
 
     const ticket = await Ticket.findById(ticketId);
 
@@ -38,19 +43,15 @@ export const createOrder = async (req, res) => {
         currency: "INR",
       });
 
-    const reservation =
-      await Reservation.create({
-        userId:
-          req.session.user.id,
-
-        ticketId,
-
-        quantity,
-
-        orderId: order.id,
-
-        expiresAt,
-      });
+    const reservation = await Reservation.create({
+      userId: req.session.user.id,
+      ticketId,
+      quantity,
+      contact,
+      devotees,
+      orderId: order.id,
+      expiresAt,
+    });
 
     return res.json({
       order,
@@ -150,16 +151,23 @@ export const verifyPayment = async (req, res) => {
 
     await ticket.save();
 
-    const booking = await Booking.create({     
+    const booking = await Booking.create({
       user: reservation.userId,
       temple: ticket.temple,
       darshanType: ticket.darshanType,
       ticket: ticket._id,
       reservation: reservation._id,
+
+      contact: reservation.contact,
+      devotees: reservation.devotees,
+
       quantity: reservation.quantity,
+      ticketPrice: ticket.price,
       totalAmount: amount,
+
       paymentStatus: "Paid",
       bookingStatus: "Confirmed",
+
       paymentReference: razorpay_payment_id,
       razorpayOrderId: razorpay_order_id,
       razorpayPaymentId: razorpay_payment_id,
@@ -174,7 +182,7 @@ export const verifyPayment = async (req, res) => {
       success: true,
       message: "Booking confirmed successfully",
       booking,
-    });   
+    });
 
   } catch (error) {
     console.error(error);

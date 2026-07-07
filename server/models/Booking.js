@@ -38,6 +38,55 @@ const bookingSchema = new mongoose.Schema(
       default: null,
     },
 
+    contact: {
+      mobile: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
+      email: {
+        type: String,
+        required: true,
+        lowercase: true,
+        trim: true,
+      },
+
+      address: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+    },
+
+    devotees: [
+      {
+        name: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+
+        age: {
+          type: Number,
+          required: true,
+          min: 1,
+        },
+
+        gender: {
+          type: String,
+          enum: ["Male", "Female", "Other"],
+          required: true,
+        },       
+
+        idProof: {
+          type: String,
+          default: "",
+          trim: true,
+        }
+      }
+    ],
+
     quantity: {
       type: Number,
       required: true,

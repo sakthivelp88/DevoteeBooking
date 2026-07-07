@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 const API_URL = "http://localhost:5000/api";
 
@@ -9,6 +8,8 @@ function Tickets() {
   const [tickets, setTickets] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
 
   const user = JSON.parse(localStorage.getItem("user") || "null");
 
@@ -42,104 +43,22 @@ function Tickets() {
         darshanTypeId,
       });
       console.log("Tickets received:", res.data);
-      setTickets(res.data);
+      setTickets(res.data.tickets);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleBooking = async (ticket) => {
-    try {
-      setLoading(true);
+ 
+  const handleBooking = (ticket) => {
+    const quantity = quantities[ticket._id] || 1;
 
-      const quantity = quantities[ticket._id] || 1;
-
-      // STEP 1
-      const orderResponse = await axios.post(
-        `${API_URL}/payment/create-order`,
-        {
-          ticketId: ticket._id,
-          quantity,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-
-      const { order } = orderResponse.data;
-
-      console.log(
-        "Razorpay Key:",
-        import.meta.env.VITE_RAZORPAY_KEY_ID,
-      );
-
-      // STEP 2
-      const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-        amount: order.amount,
-        currency: order.currency,
-        name: "Darshan Ticket Booking",
-        description: ticket.title,
-        order_id: order.id,
-
-        handler: async function (response) {
-          try {
-            // STEP 3
-            const verifyResponse =
-              await axios.post(
-                `${API_URL}/payment/verify`,
-                {
-                  ...response,
-                  ticketId: ticket._id,
-                  quantity,
-                },
-                {
-                  withCredentials: true,
-                }
-              );
-
-            if (verifyResponse.data.success) {
-              alert(
-                "Booking Confirmed Successfully"
-              );
-
-              loadTickets();
-            }
-          } catch (error) {
-            console.error(error);
-
-            alert(
-              "Payment verification failed"
-            );
-          }
-        },
-
-        prefill: {
-          name: user?.name || "",
-          email: user?.email || "",
-          contact: user?.phone || "",
-        },
-
-        theme: {
-          color: "#ea580c",
-        },
-      };
-
-      const razorpay =
-        new window.Razorpay(options);
-
-      razorpay.open();
-
-    } catch (error) {
-      console.error(error);
-
-      alert(
-        error?.response?.data?.message ||
-        "Something went wrong"
-      );
-    } finally {
-      setLoading(false);
-    }
+    navigate("/booking", {
+      state: {
+        ticket,
+        quantity,
+      },
+    });
   };
 
   return (
@@ -225,15 +144,10 @@ function Tickets() {
                 />
               </div>
               <button
-                onClick={() =>
-                  handleBooking(ticket)
-                }
-                disabled={loading}
+                onClick={() => handleBooking(ticket)}
                 className="mt-4 w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700"
               >
-                {loading
-                  ? "Processing..."
-                  : "Book Now"}
+                Continue
               </button>
             </div>
           ))}
