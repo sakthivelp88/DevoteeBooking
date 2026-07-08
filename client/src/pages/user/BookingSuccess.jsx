@@ -100,6 +100,28 @@ function BookingSuccess() {
 
                 </div>
 
+                <div className="mt-8 text-center">
+                    <h3 className="text-xl font-semibold mb-4">
+                        Entry QR Code
+                    </h3>
+
+                    {booking.qrCode ? (
+                        <img
+                            src={booking.qrCode}
+                            alt="Booking QR"
+                            className="mx-auto w-56 h-56 border rounded-lg shadow"
+                        />
+                    ) : (
+                        <p className="text-gray-500">
+                            QR Code not available.
+                        </p>
+                    )}
+
+                    <p className="text-sm text-gray-500 mt-3">
+                        Please present this QR code at the temple entrance for verification.
+                    </p>
+                </div>
+
                 <hr className="my-8" />
 
                 <h3 className="font-semibold mb-4">
@@ -119,19 +141,31 @@ function BookingSuccess() {
                     ))}
                 </div>
 
-                <div className="flex justify-center gap-4 mt-10">
+                <div className="flex flex-wrap justify-center gap-4 mt-10">
                     <button
                         onClick={() => navigate("/my-bookings")}
-                        className="bg-orange-600 text-white px-6 py-3 rounded-lg"
+                        className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700"
                     >
                         My Bookings
                     </button>
 
                     <button
+                        onClick={() =>
+                            window.open(
+                                `http://localhost:5000/api/bookings/${booking._id}/pdf`,
+                                "_blank"
+                            )
+                        }
                         className="bg-blue-600 text-white px-6 py-3 rounded-lg"
+                    >
+                        Download PDF
+                    </button>
+
+                    <button
+                        className="bg-green-600 text-white px-6 py-3 rounded-lg opacity-50 cursor-not-allowed"
                         disabled
                     >
-                        Download Ticket
+                        Email Ticket
                     </button>
                 </div>
 

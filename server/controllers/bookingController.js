@@ -1,4 +1,5 @@
 import Booking from "../models/Booking.js";
+import { generateTicketPDF } from "../utils/ticketPdf.js";
 
 // Logged-in user's bookings
 export const myBookings = async (req, res) => {
@@ -50,6 +51,42 @@ export const getBookingById = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const downloadTicket = async (req, res) => {
+  try {
+    const booking = await Booking.findOne({
+      _id: req.params.id,
+      user: req.session.user.id,
+    })
+      .populate("temple")
+      .populate("darshanType")
+      .populate("ticket");
+
+    if (!booking) {
+      return res.status(404).json({
+        message: "Booking not found",
+      });
+    }
+
+  const pdf = await generateTicketPDF(booking);
+
+    res.setHeader(
+      "Content-Type",
+      "application/pdf"
+    );
+
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=${booking.bookingNumber}.pdf`
+    );
+
+    res.send(pdf);
+  } catch (error) {
+    res.status(500).json({
       message: error.message,
     });
   }

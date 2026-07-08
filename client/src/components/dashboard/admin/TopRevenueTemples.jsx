@@ -1,3 +1,5 @@
+import { formatCurrency } from "../../../utils/formatCurrency";
+
 export default function TopRevenueTemples({
     temples,
 }) {

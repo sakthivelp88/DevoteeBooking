@@ -34,6 +34,7 @@ import Settings from "./pages/admin/profile/Settings";
 import PaymentManagement from "./pages/admin/PaymentManagement";
 import ReportsAnalytics from "./pages/admin/AdminReportsAnalytics";
 import UserManagement from "./pages/admin/UserManagement";
+import AdminTicketScanner from "./pages/admin/AdminTicketScanner";
 
 function App() {
   return (
@@ -164,6 +165,11 @@ function App() {
           />
 
           <Route path="users" element={<UserManagement />} />
+
+          <Route
+            path="scanner"
+            element={<AdminTicketScanner />}
+          />
 
           {/* ================= ADMIN DROPDOWN ================= */}
           <Route path="profile" element={<Profile />} />
