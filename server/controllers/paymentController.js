@@ -4,6 +4,9 @@ import razorpay from "../config/razorpay.js";
 import Ticket from "../models/Ticket.js";
 import Booking from "../models/Booking.js";
 import Reservation from "../models/Reservation.js";
+import { generateBookingQR } from "../utils/qrGenerator.js";
+import { generateTicketPDF } from "../utils/ticketPdf.js";
+import { sendTicketEmail } from "../utils/sendTicketEmail.js";
 
 export const createOrder = async (req, res) => {
   console.log("Session:", req.session);
@@ -69,7 +72,7 @@ export const createOrder = async (req, res) => {
     });
 
   } catch (error) {
-      console.error("Create Order Error:", error);
+    console.error("Create Order Error:", error);
     res.status(500).json({
       message: error.message,
     });
@@ -183,6 +186,29 @@ export const verifyPayment = async (req, res) => {
       razorpayOrderId: razorpay_order_id,
       razorpayPaymentId: razorpay_payment_id,
     });
+
+    const qrCode = await generateBookingQR(booking);
+
+    booking.qrCode = qrCode;
+
+    await booking.save();
+
+    await booking.populate([
+      { path: "temple" },
+      { path: "darshanType" },
+      { path: "ticket" },
+    ]);
+
+    try {
+      const pdfBuffer = await generateTicketPDF(booking);
+
+      await sendTicketEmail({
+        booking,
+        pdfBuffer,
+      });
+    } catch (emailError) {
+      console.error("Email sending failed:", emailError);
+    }
 
     reservation.status = "CONFIRMED";
     reservation.paymentStatus = "SUCCESS";

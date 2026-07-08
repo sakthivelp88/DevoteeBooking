@@ -77,7 +77,7 @@ const bookingSchema = new mongoose.Schema(
           type: String,
           enum: ["Male", "Female", "Other"],
           required: true,
-        },       
+        },
 
         idProof: {
           type: String,
@@ -145,6 +145,16 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    isVisited: {
+      type: Boolean,
+      default: false,
+    },
+
+    visitedAt: {
+      type: Date,
+      default: null,
+    },
+    
     remarks: {
       type: String,
       default: ""

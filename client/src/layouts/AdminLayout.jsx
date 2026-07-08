@@ -17,7 +17,7 @@ import {
 } from "react-icons/fi";
 
 import { FaPlaceOfWorship } from "react-icons/fa";
-
+import { BsQrCodeScan } from "react-icons/bs";
 import { useAuth } from "../context/AuthContext";
 
 export default function AdminLayout() {
@@ -78,6 +78,12 @@ export default function AdminLayout() {
       path: "/admin/users",
       icon: <FiUsers size={18} />,
     },
+
+    {
+      label: "Ticket Scanner",
+      path: "/admin/scanner",
+      icon: <BsQrCodeScan size={18} />,
+    }
   ];
 
   const pageTitles = {
@@ -92,6 +98,7 @@ export default function AdminLayout() {
     "/admin/profile": "Profile",
     "/admin/change-password": "Change Password",
     "/admin/settings": "Settings",
+    "/admin/scanner": "Ticket Scanner",
   };
 
   const currentPage = pageTitles[location.pathname] || "Dashboard";
@@ -133,7 +140,7 @@ export default function AdminLayout() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 space-y-1 overflow-y-auto px-4 py-5">
+        <nav className="flex-1 space-y-1 px-4 py-3">
           {menuItems.map((item) => (
             <NavLink
               key={item.path}

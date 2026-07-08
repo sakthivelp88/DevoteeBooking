@@ -14,7 +14,7 @@ import darshanTypeRoutes from "./routes/darshanTypeRoutes.js";
 import adminPaymentRoutes from "./routes/adminPaymentRoutes.js";
 import adminReportRoutes from "./routes/adminReportRoutes.js";
 import adminUserRoutes from "./routes/adminUserRoutes.js";
-
+import adminTicketVerificationRoutes from "./routes/adminTicketVerificationRoutes.js";
 
 
 const app = express();
@@ -66,6 +66,8 @@ app.use("/api/temples", templeRoutes);
 app.use("/api/darshan-types", darshanTypeRoutes);
 
 app.use("/api/admin/users", adminUserRoutes);
+
+app.use("/api/admin/bookings", adminTicketVerificationRoutes);
 
 app.use("/uploads", express.static("uploads"));
 

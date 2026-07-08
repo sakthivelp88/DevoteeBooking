@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadBookings();
@@ -16,8 +18,8 @@ export default function MyBookings() {
     );
 
     const data = await res.json();
-    console.log("BOOKINGS DATA:", data);
-    setBookings(data);
+
+    setBookings(data.bookings || []);
   };
 
   return (
@@ -31,43 +33,105 @@ export default function MyBookings() {
           No bookings found.
         </p>
       ) : (
-        <div className="max-w-4xl mx-auto grid gap-6">
+        <div className="max-w-5xl mx-auto grid gap-6">
           {bookings.map((booking) => (
             <div
               key={booking._id}
-              className="bg-white rounded-xl shadow-md p-6"
+              className="bg-white rounded-xl shadow-lg p-6"
             >
-              <h3 className="text-xl font-bold text-orange-600 mb-4">
-                {booking.ticketId?.title}
-              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Left */}
+                <div>
+                  <h3 className="text-2xl font-bold text-orange-600">
+                    {booking.temple?.name}
+                  </h3>
 
-              <h3 className="text-xl font-bold text-orange-600 mb-4">
-                {booking.ticketId?.temple}
-              </h3>
+                  <p className="text-gray-600 mt-1">
+                    {booking.darshanType?.name}
+                  </p>
 
-              <div className="grid grid-cols-2 gap-y-3">
-                <span className="font-semibold">
-                  Quantity
-                </span>
-                <span>{booking.quantity}</span>
+                  <div className="mt-5 space-y-2">
+                    <p>
+                      <strong>Booking No:</strong>{" "}
+                      {booking.bookingNumber}
+                    </p>
 
-                <span className="font-semibold">
-                  Amount
-                </span>
-                <span>₹{booking.amount}</span>
+                    <p>
+                      <strong>Date:</strong>{" "}
+                      {new Date(
+                        booking.ticket?.date
+                      ).toLocaleDateString()}
+                    </p>
 
-                <span className="font-semibold">
-                  Payment Status
-                </span>
-                <span
-                  className={`font-semibold ${
-                    booking.paymentStatus === "Paid"
-                      ? "text-green-600"
-                      : "text-red-600"
-                  }`}
-                >
-                  {booking.paymentStatus}
-                </span>
+                    <p>
+                      <strong>Slot:</strong>{" "}
+                      {booking.ticket?.slotStart} -
+                      {booking.ticket?.slotEnd}
+                    </p>
+
+                    <p>
+                      <strong>Quantity:</strong>{" "}
+                      {booking.quantity}
+                    </p>
+
+                    <p>
+                      <strong>Total:</strong> ₹
+                      {booking.totalAmount}
+                    </p>
+
+                    <p>
+                      <strong>Booking:</strong>{" "}
+                      <span className="text-green-600 font-semibold">
+                        {booking.bookingStatus}
+                      </span>
+                    </p>
+
+                    <p>
+                      <strong>Payment:</strong>{" "}
+                      <span className="text-green-600 font-semibold">
+                        {booking.paymentStatus}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right */}
+                <div className="flex flex-col items-center justify-between">
+                  {booking.qrCode ? (
+                    <img
+                      src={booking.qrCode}
+                      alt="QR Code"
+                      className="w-40 h-40 border rounded-lg"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 border rounded-lg flex items-center justify-center text-gray-400">
+                      No QR
+                    </div>
+                  )}
+
+                  <div className="flex gap-3 mt-6">
+                    <button
+                      onClick={() =>
+                        navigate(`/booking-success/${booking._id}`)
+                      }
+                      className="bg-orange-600 text-white px-4 py-2 rounded-lg"
+                    >
+                      View Ticket
+                    </button>
+
+                    <button
+                      onClick={() =>
+                        window.open(
+                          `http://localhost:5000/api/bookings/${booking._id}/pdf`,
+                          "_blank"
+                        )
+                      }
+                      className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                    >
+                      PDF
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
