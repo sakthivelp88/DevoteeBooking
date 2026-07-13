@@ -30,18 +30,10 @@ const Navbar = () => {
       }
     };
 
-    useEffect(() => {
-      console.log("Navbar mounted");
-    }, []);
-
-    useEffect(() => {
-      console.log("Dropdown open:", open);
-    }, [open]);
-
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside); // cleanup method
     };
   }, []);
 
@@ -49,7 +41,7 @@ const Navbar = () => {
     const success = await logout();
 
     if (success) {
-      navigate("/login");
+      navigate("/");
     }
   };
 
@@ -88,7 +80,7 @@ const Navbar = () => {
             {/* Profile Button */}
             <button
               onClick={() => setOpen(!open)}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 cursor-pointer"
             >
               <div className="w-10 h-10 rounded-full bg-white text-orange-600 flex items-center justify-center font-bold">
                 {user.name?.charAt(0).toUpperCase()}
@@ -178,7 +170,8 @@ const Navbar = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50"
+                  className="w-full flex items-center gap-3 px-4 py-3 text-red-600 
+                  hover:bg-red-50 cursor-pointer"
                 >
                   <FiLogOut />
                   Logout

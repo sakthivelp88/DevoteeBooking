@@ -25,6 +25,11 @@ export const getMyBookings = async () => {
   return data;
 };
 
+export const cancelBooking = async (id, reason) => {
+  const { data } = await api.patch(`/bookings/${id}/cancel`, { reason, });
+  return data;
+};
+
 /* ============================
    Admin Booking APIs
 ============================ */
@@ -50,6 +55,14 @@ export const updateBookingStatus = async (
   const { data } = await api.patch(
     `/bookings/admin/${bookingId}/status`,
     payload
+  );
+
+  return data;
+};
+
+export const processRefund = async (id) => {
+  const { data } = await api.patch(
+    `/bookings/admin/${id}/refund`
   );
 
   return data;
