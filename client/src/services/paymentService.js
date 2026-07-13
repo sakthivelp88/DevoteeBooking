@@ -1,7 +1,6 @@
-import api from "./api";
+import api from "./api/api";
 
-export const createOrder = async (payload) => {
-   console.log("paymentService payload:", payload);
+export const createOrder = async (payload) => {   
   const { data } = await api.post(
     "/payment/create-order",
     payload

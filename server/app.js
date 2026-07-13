@@ -3,17 +3,23 @@ import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
+//User Routes
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import ticketRoutes from "./routes/ticketRoutes.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";
 import templeRoutes from "./routes/templeRoutes.js";
 import darshanTypeRoutes from "./routes/darshanTypeRoutes.js";
+import feedbackRoutes from "./routes/feedbackRoutes.js";
+
+//Admin Routes
+import adminRoutes from "./routes/adminRoutes.js";
 import adminPaymentRoutes from "./routes/adminPaymentRoutes.js";
 import adminReportRoutes from "./routes/adminReportRoutes.js";
 import adminUserRoutes from "./routes/adminUserRoutes.js";
+import adminFeedbackRoutes from "./routes/adminFeedbackRoutes.js"
 import adminTicketVerificationRoutes from "./routes/adminTicketVerificationRoutes.js";
 
 
@@ -49,6 +55,8 @@ app.use("/api/admin", adminRoutes);
 
 app.use("/api/auth", authRoutes);
 
+app.use("/api/users", userRoutes);
+
 app.use("/api/tickets", ticketRoutes);
 
 app.use("/api/bookings", bookingRoutes);
@@ -70,6 +78,12 @@ app.use("/api/admin/users", adminUserRoutes);
 app.use("/api/admin/bookings", adminTicketVerificationRoutes);
 
 app.use("/uploads", express.static("uploads"));
+
+app.use("/api/feedback", feedbackRoutes);
+
+app.use("/api/feedback/admin", adminFeedbackRoutes);
+
+
 
 export default app;
 

@@ -1,7 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import * as authService from "../services/authService";
+import * as authService from "../services/auth/authService";
 
 const AuthContext = createContext();
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  // console.log("useAuth context:", context);
+  return context;
+};
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -34,15 +40,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-  try {
-    await authService.logout();
-    setUser(null);
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-};
+    try {
+      await authService.logout();
+      setUser(null);
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
 
   return (
     <AuthContext.Provider
@@ -59,9 +65,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  // console.log("useAuth context:", context);
-  return context;
 };

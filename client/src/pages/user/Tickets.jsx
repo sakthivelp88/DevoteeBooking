@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../services/api/api";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-
-const API_URL = "http://localhost:5000/api";
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -18,18 +16,15 @@ function Tickets() {
   }
 
   const { templeId, darshanTypeId } = useParams();
-
-  console.log("Temple ID:", templeId);
-  console.log("Darshan Type ID:", darshanTypeId);
-
+  
   useEffect(() => {
     loadTickets();
   }, [templeId, darshanTypeId]);
 
   const loadTickets = async () => {
     try {
-      const res = await axios.get(
-        `${API_URL}/tickets`,
+      const res = await api.get(
+        `/tickets`,
         {
           params: {
             templeId,
@@ -38,12 +33,9 @@ function Tickets() {
           withCredentials: true,
         }
       );
-      console.log("Sending params:", {
-        templeId,
-        darshanTypeId,
-      });
-      console.log("Tickets received:", res.data);
+
       setTickets(res.data.tickets);
+
     } catch (error) {
       console.error(error);
     }

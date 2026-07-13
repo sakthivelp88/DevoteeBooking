@@ -1,15 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { user, login } = useAuth(); 
 
   const [form, setForm] = useState({
     emailOrPhone: "",
     password: "",
   });
+
+  if (user) {
+    if (user.role === "admin") {
+      return <Navigate to="/admin" replace />;
+    }
+
+    return <Navigate to="/" replace />;
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -23,9 +31,7 @@ export default function Login() {
       const response = await login(
         form.emailOrPhone,
         form.password
-      );
-
-      // alert("Login successful");
+      );   
 
       if (response.user.role === "admin") {
         navigate("/admin");
@@ -41,6 +47,7 @@ export default function Login() {
       );
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -91,7 +98,7 @@ export default function Login() {
             onClick={() => navigate("/register")}
             className="text-blue-600 hover:underline font-medium"
           >
-            Register  
+            Register
           </button>
         </p>
       </div>

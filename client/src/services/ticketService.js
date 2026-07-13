@@ -1,26 +1,24 @@
-import axios from "axios";
-
-const API = "http://localhost:5000/api";
+import api from "./api/api";
 
 export const getTickets = async (params) => {
-  const { data } = await axios.get(`${API}/tickets`, {
+  const { data } = await api.get(`/tickets`, {
     params,
     withCredentials: true,
   });
 
-  return data; // ✅ Return the full response
+  return data; // Return the full response
 };
 
 export const getTicketById = async (id) => {
-  const { data } = await axios.get(`${API}/tickets/${id}`, {
+  const { data } = await api.get(`/tickets/${id}`, {
     withCredentials: true,
   });
   return data.ticket;
 };
 
 export const createTicket = async (ticketData) => {
-  const { data } = await axios.post(
-    `${API}/tickets`,
+  const { data } = await api.post(
+    `/tickets`,
     ticketData,
     {
       withCredentials: true,
@@ -31,8 +29,8 @@ export const createTicket = async (ticketData) => {
 };
 
 export const updateTicket = async (id, ticketData) => {
-  const { data } = await axios.put(
-    `${API}/tickets/${id}`,
+  const { data } = await api.put(
+    `/tickets/${id}`,
     ticketData,
     {
       withCredentials: true,
@@ -43,8 +41,8 @@ export const updateTicket = async (id, ticketData) => {
 };
 
 export const updateTicketStatus = async (id, status) => {
-  const { data } = await axios.patch(
-    `${API}/tickets/${id}/status`,
+  const { data } = await api.patch(
+    `/tickets/${id}/status`,
     { status },
     {
       withCredentials: true,
@@ -55,8 +53,8 @@ export const updateTicketStatus = async (id, status) => {
 };
 
 export const deleteTicket = async (id) => {
-  const { data } = await axios.delete(
-    `${API}/tickets/${id}`,
+  const { data } = await api.delete(
+    `/tickets/${id}`,
     {
       withCredentials: true,
     }

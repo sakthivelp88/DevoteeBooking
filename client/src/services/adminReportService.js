@@ -1,8 +1,10 @@
-import api from "./api";
+import api from "./api/api";
+
+const API = "/admin/reports";
 
 class AdminReportService {
     async getSummary(filters = {}) {
-        const response = await api.get("/admin/reports/summary", {
+        const response = await api.get(`${API}/summary`, {
             params: filters,
         });
 
@@ -10,7 +12,7 @@ class AdminReportService {
     }
 
     async getRevenueReport(filters = {}) {
-        const response = await api.get("/admin/reports/revenue", {
+        const response = await api.get(`${API}/revenue`, {
             params: filters,
         });
 
@@ -18,7 +20,7 @@ class AdminReportService {
     }
 
     async getBookingReport(filters = {}) {
-        const response = await api.get("/admin/reports/bookings", {
+        const response = await api.get(`${API}/bookings`, {
             params: filters,
         });
 
@@ -26,7 +28,7 @@ class AdminReportService {
     }
 
     async getPaymentReport(filters = {}) {
-        const response = await api.get("/admin/reports/payments", {
+        const response = await api.get(`${API}/payments`, {
             params: filters,
         });
 
@@ -34,7 +36,7 @@ class AdminReportService {
     }
 
     async getAnalyticsDashboard(filters = {}) {
-        const response = await api.get("/admin/reports/analytics", {
+        const response = await api.get(`${API}/analytics`, {
             params: filters,
         });
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getTempleById } from "../../services/templeService";
-import { getDarshanTypesByTemple } from "../../services/darshanTypeService";
+import { getDarshanTypesByTemple, } from "../../services/darshanTypeService";
 
 const TempleDetails = () => {
   const { id } = useParams();
@@ -39,6 +39,14 @@ const TempleDetails = () => {
         <h2 className="text-xl font-semibold">
           Loading temple details...
         </h2>
+      </div>
+    );
+  }
+
+  if (!temple) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <h2>Temple not found.</h2>
       </div>
     );
   }

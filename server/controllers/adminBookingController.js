@@ -1,4 +1,3 @@
-import Booking from "../models/Booking.js";
 
 import {
   getBookings,
@@ -76,3 +75,4 @@ export const updateAdminBookingStatus = async (req, res) => {
     });
   }
 };
+

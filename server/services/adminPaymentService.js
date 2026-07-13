@@ -2,7 +2,7 @@ import Booking from "../models/Booking.js";
 
 export const getPayments = async () => {
     const bookings = await Booking.find()
-        .populate("user", "fullName email")
+        .populate("user", "name email")
         .populate("temple", "name")
         .populate("darshanType", "name")
         .populate("ticket", "date slotStart slotEnd")
@@ -13,7 +13,7 @@ export const getPayments = async () => {
 
         bookingNumber: booking.bookingNumber,
 
-        devoteeName: booking.user?.fullName,
+        devoteeName: booking.user?.name,
 
         templeName: booking.temple?.name,
 

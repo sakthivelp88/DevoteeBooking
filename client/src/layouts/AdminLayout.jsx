@@ -14,6 +14,7 @@ import {
   FiLogOut,
   FiChevronDown,
   FiLock,
+  FiMessageSquare,
 } from "react-icons/fi";
 
 import { FaPlaceOfWorship } from "react-icons/fa";
@@ -80,6 +81,12 @@ export default function AdminLayout() {
     },
 
     {
+      label: "Feedback Management",
+      path: "/admin/feedback",
+      icon: <FiMessageSquare size={18} />,
+    },
+
+    {
       label: "Ticket Scanner",
       path: "/admin/scanner",
       icon: <BsQrCodeScan size={18} />,
@@ -98,6 +105,7 @@ export default function AdminLayout() {
     "/admin/profile": "Profile",
     "/admin/change-password": "Change Password",
     "/admin/settings": "Settings",
+    "/admin/feedback": "Feedback Management",
     "/admin/scanner": "Ticket Scanner",
   };
 
@@ -132,7 +140,7 @@ export default function AdminLayout() {
       <aside className="fixed left-0 top-0 z-50 flex h-screen w-72 flex-col border-r border-slate-800 bg-slate-900 text-white shadow-2xl">
 
         {/* Logo */}
-        <div className="border-b border-slate-800 px-6 py-7">
+        <div className="border-b border-slate-800 px-6 py-8">
           <h1 className="flex items-center gap-2 text-2xl font-bold">
             <FaPlaceOfWorship className="text-orange-400" />
             <span>Temple Admin</span>
@@ -140,7 +148,8 @@ export default function AdminLayout() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 space-y-1 px-4 py-3">
+        <nav className="flex-1 overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded 
+              scrollbar-thumb-orange-400 scrollbar-track-transparent space-y-1 px-4 py-3">
           {menuItems.map((item) => (
             <NavLink
               key={item.path}

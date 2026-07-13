@@ -1,8 +1,6 @@
-export const openRazorpay = ({
-    order,
-    user,
-    onSuccess,
-}) => {
+
+
+export const openRazorpay = ({order, user, onSuccess,}) => {
     const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
 

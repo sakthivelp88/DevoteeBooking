@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "./api/api";
 
 export const getAdminBookings = async (params) => {
   const { data } = await api.get("/bookings/admin", {

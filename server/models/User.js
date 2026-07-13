@@ -5,20 +5,29 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
 
     email: {
       type: String,
-      unique: true
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
     },
+
     phone: {
       type: String,
       required: true,
       unique: true,
+      trim: true,
+      minlength: 10,
     },
+
     password: {
       type: String,
       required: true,
+      minlength: 10,
     },
 
     profileImage: {
@@ -26,10 +35,27 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
 
+    gender: {
+      type: String,
+      enum: ["Male", "Female", "Other"],
+      required: true,
+    },
+
+    dob: {
+      type: Date,
+      required: true,
+    },
+
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
     role: {
       type: String,
       enum: ["admin", "devotee"],
-      default: "devotee"
+      default: "devotee",
     },
 
     status: {
@@ -40,15 +66,13 @@ const userSchema = new mongoose.Schema(
 
     provider: {
       type: String,
-      default: "local"
+      default: "local",
     },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
+const User = mongoose.model("User", userSchema);
 
-export default mongoose.model(
-  "User",
-  userSchema
-);
+export default User;

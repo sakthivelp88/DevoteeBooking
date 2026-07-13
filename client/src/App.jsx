@@ -5,9 +5,9 @@ import { Toaster } from "react-hot-toast";
 import UserLayout from "./layouts/UserLayout";
 import AdminLayout from "./layouts/AdminLayout";
 
-// Components
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminRoute from "./components/AdminRoute";
+// components/routes
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminRoute from "./routes/AdminRoute";
 
 // User Pages
 import Home from "./pages/user/Home";
@@ -18,7 +18,16 @@ import TempleDetails from "./pages/user/TempleDetails";
 import Tickets from "./pages/user/Tickets";
 import MyBookings from "./pages/user/MyBookings";
 import BookingDetails from "./pages/user/BookingDetails";
+import BookingTicket from "./pages/user/BookingTicket";
 import BookingSuccess from "./pages/user/BookingSuccess";
+import Feedback from "./pages/user/Feedback";
+
+
+// User Profile
+import Profile from "./pages/user/profile/Profile";
+import ChangePassword from "./pages/user/profile/ChangePassword";
+import Settings from "./pages/user/profile/Settings";
+import EditProfile from "./pages/user/profile/EditProfile";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -28,17 +37,21 @@ import AdminTicketSlots from "./pages/admin/AdminTicketSlots";
 import AdminBookings from "./pages/admin/AdminBookings";
 import AdminCreateTicket from "./pages/admin/AdminCreateTicket";
 import AdminBookingDetails from "./pages/admin/AdminBookingDetails";
-import Profile from "./pages/admin/profile/Profile";
-import ChangePassword from "./pages/admin/profile/ChangePassword";
-import Settings from "./pages/admin/profile/Settings";
 import PaymentManagement from "./pages/admin/PaymentManagement";
 import ReportsAnalytics from "./pages/admin/AdminReportsAnalytics";
 import UserManagement from "./pages/admin/UserManagement";
+import AdminFeedback from "./pages/admin/AdminFeedback";
 import AdminTicketScanner from "./pages/admin/AdminTicketScanner";
+
+// Admin Profile
+import AdminProfile from "./pages/admin/profile/Profile";
+import AdminChangePassword from "./pages/admin/profile/ChangePassword";
+import AdminSettings from "./pages/admin/profile/Settings";
 
 function App() {
   return (
     <BrowserRouter>
+
       <Toaster position="top-right" />
 
       <Routes>
@@ -106,6 +119,49 @@ function App() {
             }
           />
 
+          <Route
+            path="/booking/:id"
+            element={
+              <ProtectedRoute>
+                <BookingTicket />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* ================= USER DROPDOWN ================= */}
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+          />
+          <Route path="/profile/edit" element={
+            <ProtectedRoute>
+              <EditProfile />
+            </ProtectedRoute>
+          }
+          />
+          <Route path="/change-password" element={
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
+          }
+          />
+          <Route
+            path="/feedback"
+            element={
+              <ProtectedRoute>
+                <Feedback />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/settings" element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+          />
+
         </Route>
 
         {/* ================= ADMIN LAYOUT ================= */}
@@ -167,14 +223,19 @@ function App() {
           <Route path="users" element={<UserManagement />} />
 
           <Route
+            path="feedback"
+            element={<AdminFeedback />}
+          />
+
+          <Route
             path="scanner"
             element={<AdminTicketScanner />}
           />
 
           {/* ================= ADMIN DROPDOWN ================= */}
-          <Route path="profile" element={<Profile />} />
-          <Route path="change-password" element={<ChangePassword />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="profile" element={<AdminProfile />} />
+          <Route path="change-password" element={<AdminChangePassword />} />
+          <Route path="settings" element={<AdminSettings />} />
 
         </Route>
 

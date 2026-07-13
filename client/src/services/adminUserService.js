@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "./api/api";
 
 /* ============================================================
                     Get All Users
@@ -39,10 +39,7 @@ export const updateUser = async (id, data) => {
                 Update User Status
 ============================================================ */
 
-export const updateUserStatus = async (
-  id,
-  status
-) => {
+export const updateUserStatus = async (id, status) => {
   const response = await api.patch(
     `/admin/users/${id}/status`,
     { status }

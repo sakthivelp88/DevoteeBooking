@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import {
   getDarshanTypes,
   deleteDarshanType,
-} from "../../services/darshanTypeService";
+} from "../../services/adminDarshanTypeService";
 
 import DarshanTypeTable from "../../components/admin/DarshanTypeTable";
 import DarshanTypeForm from "../../components/admin/DarshanTypeForm";

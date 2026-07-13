@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../../services/api/api"
 import { useNavigate } from "react-router-dom";
 
 export default function MyBookings() {
@@ -10,16 +11,12 @@ export default function MyBookings() {
   }, []);
 
   const loadBookings = async () => {
-    const res = await fetch(
-      "http://localhost:5000/api/bookings/my",
+    const res = await api.get("/bookings/my",
       {
         credentials: "include",
       }
     );
-
-    const data = await res.json();
-
-    setBookings(data.bookings || []);
+    setBookings(res.data.bookings || []);
   };
 
   return (
