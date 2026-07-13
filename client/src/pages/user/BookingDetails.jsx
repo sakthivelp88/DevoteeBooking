@@ -17,7 +17,7 @@ function BookingDetails() {
     const { state } = useLocation();
     const navigate = useNavigate();
     const { user } = useAuth();
-
+    
     const { ticket, quantity } = state || {};
 
     const [loading, setLoading] = useState(false);

@@ -3,20 +3,22 @@ import express from "express";
 import { auth } from "../middleware/auth.js";
 import { admin } from "../middleware/admin.js";
 import uploadProfile from "../middleware/uploadProfile.js";
+
+// import { getBookings,} from "../controllers/adminController.js";
+import { adminDashboard } from "../controllers/adminDashboardController.js";
+
 import {
-  adminDashboard,
-  getBookings,
   updateProfile,
-  changePassword,
   uploadProfilePhoto,
   removeProfilePhoto,
-} from "../controllers/adminController.js";
+  changePassword,
+} from "../controllers/adminProfileController.js";
 
 const router = express.Router();
 
 router.get("/dashboard", auth, admin, adminDashboard);
 
-router.get("/bookings", auth, admin, getBookings);
+// router.get("/bookings", auth, admin, getBookings);
 
 router.put("/profile", auth, admin, updateProfile);
 

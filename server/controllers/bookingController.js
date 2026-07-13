@@ -72,7 +72,7 @@ export const downloadTicket = async (req, res) => {
       });
     }
 
-  const pdf = await generateTicketPDF(booking);
+    const pdf = await generateTicketPDF(booking);
 
     res.setHeader(
       "Content-Type",

@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import {
     createDarshanType,
     updateDarshanType,
-} from "../../services/darshanTypeService";
+} from "../../services/adminDarshanTypeService";
 
 export default function DarshanTypeForm({
     darshanType,

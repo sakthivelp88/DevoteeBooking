@@ -85,7 +85,7 @@ export const getRevenueReport = async (filters = {}) => {
     }
 
     const bookings = await Booking.find(query)
-        .populate("user", "fullName")
+        .populate("user", "name")
         .populate("temple", "name")
         .populate("darshanType", "name")
         .sort({
@@ -100,7 +100,7 @@ export const getRevenueReport = async (filters = {}) => {
 
         filteredRevenue = bookings.filter((booking) => (
             booking.bookingNumber?.toLowerCase().includes(keyword) ||
-            booking.user?.fullName?.toLowerCase().includes(keyword) ||
+            booking.user?.name?.toLowerCase().includes(keyword) ||
             booking.temple?.name?.toLowerCase().includes(keyword) ||
             booking.darshanType?.name?.toLowerCase().includes(keyword)
         ));
@@ -121,7 +121,7 @@ export const getRevenueReport = async (filters = {}) => {
         revenue: paginatedRevenue.map((booking) => ({
             id: booking._id,
             bookingNumber: booking.bookingNumber,
-            devotee: booking.user?.fullName || "-",
+            devotee: booking.user?.name || "-",
             temple: booking.temple?.name || "-",
             darshanType: booking.darshanType?.name || "-",
             amount: booking.totalAmount,
@@ -182,7 +182,7 @@ export const getBookingReport = async (filters = {}) => {
 
     // Fetch Data
     const bookings = await Booking.find(query)
-        .populate("user", "fullName")
+        .populate("user", "name")
         .populate("temple", "name")
         .populate("darshanType", "name")
         .sort({
@@ -198,7 +198,7 @@ export const getBookingReport = async (filters = {}) => {
         filteredBookings = bookings.filter((booking) => {
             return (
                 booking.bookingNumber?.toLowerCase().includes(keyword) ||
-                booking.user?.fullName?.toLowerCase().includes(keyword) ||
+                booking.user?.name?.toLowerCase().includes(keyword) ||
                 booking.temple?.name?.toLowerCase().includes(keyword) ||
                 booking.darshanType?.name?.toLowerCase().includes(keyword)
             );
@@ -222,7 +222,7 @@ export const getBookingReport = async (filters = {}) => {
         bookings: paginatedBookings.map((booking) => ({
             id: booking._id,
             bookingNumber: booking.bookingNumber,
-            devotee: booking.user?.fullName || "-",
+            devotee: booking.user?.name || "-",
             temple: booking.temple?.name || "-",
             darshanType: booking.darshanType?.name || "-",
             bookingDate: booking.createdAt,
@@ -275,7 +275,7 @@ export const getPaymentReport = async (filters = {}) => {
     }
 
     const payments = await Booking.find(query)
-        .populate("user", "fullName")
+        .populate("user", "name")
         .populate("temple", "name")
         .populate("darshanType", "name")
         .sort({
@@ -290,7 +290,7 @@ export const getPaymentReport = async (filters = {}) => {
 
         filteredPayments = payments.filter((payment) => (
             payment.bookingNumber?.toLowerCase().includes(keyword) ||
-            payment.user?.fullName?.toLowerCase().includes(keyword) ||
+            payment.user?.name?.toLowerCase().includes(keyword) ||
             payment.temple?.name?.toLowerCase().includes(keyword) ||
             payment.darshanType?.name?.toLowerCase().includes(keyword)
         ));
@@ -311,7 +311,7 @@ export const getPaymentReport = async (filters = {}) => {
         payments: paginatedPayments.map((payment) => ({
             id: payment._id,
             bookingNumber: payment.bookingNumber,
-            devotee: payment.user?.fullName || "-",
+            devotee: payment.user?.name || "-",
             temple: payment.temple?.name || "-",
             darshanType: payment.darshanType?.name || "-",
             amount: payment.totalAmount,

@@ -1,10 +1,10 @@
-import api from "./api";
+import api from "./api/api";
 
-/* =======================
-   User APIs
-======================= */
+/* ============================
+   User Booking APIs
+============================ */
 
-export const bookTicket = async (ticketId, quantity) => {
+export const createBooking = async (ticketId, quantity) => {
   const { data } = await api.post("/bookings", {
     ticketId,
     quantity,
@@ -13,8 +13,9 @@ export const bookTicket = async (ticketId, quantity) => {
   return data;
 };
 
-export const getBookingById = async (id) => {
-  const { data } = await api.get(`/bookings/${id}`);
+export const getBookingById = async (bookingId) => {
+  const { data } = await api.get(`/bookings/${bookingId}`);
+
   return data;
 };
 
@@ -24,11 +25,11 @@ export const getMyBookings = async () => {
   return data;
 };
 
-/* =======================
-   Admin APIs
-======================= */
+/* ============================
+   Admin Booking APIs
+============================ */
 
-export const getAdminBookings = async (params) => {
+export const getAdminBookings = async (params = {}) => {
   const { data } = await api.get("/bookings/admin", {
     params,
   });
@@ -36,15 +37,18 @@ export const getAdminBookings = async (params) => {
   return data;
 };
 
-export const getAdminBookingById = async (id) => {
-  const { data } = await api.get(`/bookings/admin/${id}`);
+export const getAdminBookingById = async (bookingId) => {
+  const { data } = await api.get(`/bookings/admin/${bookingId}`);
 
   return data;
 };
 
-export const updateBookingStatus = async (id, payload) => {
+export const updateBookingStatus = async (
+  bookingId,
+  payload
+) => {
   const { data } = await api.patch(
-    `/bookings/admin/${id}/status`,
+    `/bookings/admin/${bookingId}/status`,
     payload
   );
 

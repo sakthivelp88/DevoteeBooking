@@ -14,7 +14,7 @@ import {
 
 import { useAuth } from "../../../context/AuthContext";
 import { updateProfile, uploadProfilePhoto, removeProfilePhoto, }
-    from "../../../services/profileService";
+    from "../../../services/adminProfileService";
 
 export default function Profile() {
     const { user, setUser } = useAuth();
@@ -23,6 +23,7 @@ export default function Profile() {
     const [uploading, setUploading] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
+    
     const [formData, setFormData] = useState({
         name: "",
         email: "",

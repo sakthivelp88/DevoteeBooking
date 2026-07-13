@@ -1,9 +1,9 @@
-import axios from "axios";
+import api from "./api/api"
 
-const API = "http://localhost:5000/api/admin/payments";
+const API = "/admin/payments";
 
 export const getPayments = async (params = {}) => {
-  const response = await axios.get(API, {
+  const response = await api.get(API, {
     params,
     withCredentials: true,
   });
@@ -12,7 +12,7 @@ export const getPayments = async (params = {}) => {
 };
 
 export const getPaymentById = async (id) => {
-  const response = await axios.get(`${API}/${id}`, {
+  const response = await api.get(`${API}/${id}`, {
     withCredentials: true,
   });
 
@@ -20,7 +20,7 @@ export const getPaymentById = async (id) => {
 };
 
 export const updatePayment = async (id, data) => {
-  const response = await axios.put(`${API}/${id}`, data, {
+  const response = await api.put(`${API}/${id}`, data, {
     withCredentials: true,
   });
 

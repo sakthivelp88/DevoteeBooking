@@ -27,7 +27,7 @@ const AnalyticsDashboard = () => {
 
             const response = await adminReportService.getAnalyticsDashboard();
 
-            setAnalytics(response.data?.data || {
+            setAnalytics(response?.data || {
                 summary: {},
                 monthlyRevenue: [],
                 paymentStatus: [],

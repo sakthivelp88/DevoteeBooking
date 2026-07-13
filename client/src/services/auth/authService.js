@@ -1,10 +1,7 @@
-import axios from "axios";
-
-const API =
-  "http://localhost:5000/api/auth";
+import api from "../api/api"; // localhost path directory
 
 export const register = async (userData) => {
-  const response = await axios.post(`${API}/register`, userData, {
+  const response = await api.post(`auth/register`, userData, {
       withCredentials: true,
     }
   );
@@ -13,7 +10,7 @@ export const register = async (userData) => {
 };
 
 export const login = async (emailOrPhone,password) => {
-  const response = await axios.post(`${API}/login`, {
+  const response = await api.post(`auth/login`, {
       emailOrPhone,
       password,
     },
@@ -35,8 +32,8 @@ export const login = async (emailOrPhone,password) => {
 };
 
 export const logout = async () => {
-  const response = await axios.post(
-    `${API}/logout`,
+  const response = await api.post(
+    `auth/logout`,
     {},
     {
       withCredentials: true,
@@ -49,7 +46,7 @@ export const logout = async () => {
 };
 
 export const getCurrentUser = async () => {
-  const response = await axios.get(`${API}/me`, {
+  const response = await api.get(`auth/me`, {
     withCredentials: true,
   });
 
@@ -58,7 +55,7 @@ export const getCurrentUser = async () => {
 
 export const isAuthenticated = async () => {
   try {
-    await axios.get(`${API}/me`, {
+    await api.get(`auth/me`, {
       withCredentials: true,
     });
 

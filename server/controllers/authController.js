@@ -3,14 +3,18 @@ import User from "../models/User.js";
 
 export const register = async (req, res) => {
   try {
-    const { name, email, phone, password } = req.body;
+    const { name, email, phone, gender, dob, address, password } = req.body;
 
-    const existingUser =
-      await User.findOne({ email });
+    const existingUser = await User.findOne({
+      $or: [
+        { email },
+        { phone }
+      ]
+    });
 
     if (existingUser) {
       return res.status(400).json({
-        message: "User already exists",
+        message: "Email or phone number already registered",
       });
     }
 
@@ -30,6 +34,12 @@ export const register = async (req, res) => {
     });
 
   } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({
+        message: "Email or phone already exists",
+      });
+    }
+
     res.status(500).json({
       message: error.message,
     });
@@ -39,6 +49,8 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
 
+    console.log("Request Body:", req.body);
+
     const { emailOrPhone, password } = req.body;
 
     const user = await User.findOne({
@@ -47,6 +59,8 @@ export const login = async (req, res) => {
         { phone: emailOrPhone }
       ]
     });
+
+    console.log("User:", user);
 
     if (!user) {
       return res.status(400).json({
@@ -59,7 +73,8 @@ export const login = async (req, res) => {
         password,
         user.password
       );
-      
+
+    console.log("Password Match:", isMatch);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -72,7 +87,8 @@ export const login = async (req, res) => {
       name: user.name,
       email: user.email,
       phone: user.phone,
-      role: user.role,      
+      role: user.role,
+      profileImage: user.profileImage,
     };
 
     res.json({
@@ -103,17 +119,17 @@ export const me = (req, res) => {
 
 export const logout = (req, res) => {
   req.session.destroy((err) => {
-  if (err) {
-    return res.status(500).json({
-      success: false,
+    if (err) {
+      return res.status(500).json({
+        success: false,
+      });
+    }
+
+    res.clearCookie("connect.sid");
+
+    res.json({
+      success: true,
+      message: "Logged out",
     });
-  }
-
-  res.clearCookie("connect.sid");
-
-  res.json({
-    success: true,
-    message: "Logged out",
   });
-});
 };
