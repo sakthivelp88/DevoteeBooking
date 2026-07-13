@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 
 import {
   getAdminBookingById,
-  updateBookingStatus,
+  updateBookingStatus, processRefund
 } from "../../services/bookingService";
 
 import AdminStatusBadge from "../../components/admin/AdminStatusBadge";
@@ -16,6 +16,7 @@ export default function AdminBookingDetails() {
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
+  const [processingRefund, setProcessingRefund] = useState(false);
 
   const [bookingStatus, setBookingStatus] = useState("");
   const [remarks, setRemarks] = useState("");
@@ -55,10 +56,35 @@ export default function AdminBookingDetails() {
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
-          "Unable to update booking."
+        "Unable to update booking."
       );
     } finally {
       setUpdating(false);
+    }
+  };
+
+  const handleRefund = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to process this refund?"
+    );
+
+    if (!confirmed) return;
+    
+    try {
+      setProcessingRefund(true);
+
+      const response = await processRefund(id);
+
+      toast.success(response.message);
+
+      loadBooking();
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+        "Unable to process refund."
+      );
+    } finally {
+      setProcessingRefund(false);
     }
   };
 
@@ -138,6 +164,53 @@ export default function AdminBookingDetails() {
             value={booking.remarks}
           />
 
+          {booking.bookingStatus === "Cancelled" && (
+            <>
+              <Info
+                label="Cancellation Reason"
+                value={booking.cancellationReason}
+              />
+
+              <Info
+                label="Cancelled At"
+                value={
+                  booking.cancelledAt
+                    ? new Date(booking.cancelledAt).toLocaleString()
+                    : "-"
+                }
+              />
+
+              <Info
+                label="Refund Status"
+                value={booking.refundStatus}
+              />
+
+              <Info
+                label="Refund Percentage"
+                value={`${booking.refundPercentage}%`}
+              />
+
+              <Info
+                label="Refund Amount"
+                value={`₹${booking.refundAmount}`}
+              />
+
+              <Info
+                label="Refund Reference"
+                value={booking.refundReference}
+              />
+
+              <Info
+                label="Refunded At"
+                value={
+                  booking.refundedAt
+                    ? new Date(booking.refundedAt).toLocaleString()
+                    : "-"
+                }
+              />
+            </>
+          )}
+
         </div>
 
       </div>
@@ -166,9 +239,8 @@ export default function AdminBookingDetails() {
           <textarea
             rows={4}
             value={remarks}
-            onChange={(e) =>
-              setRemarks(e.target.value)
-            }
+            onChange={(e) => setRemarks(e.target.value)}
+            placeholder="Admin remarks..."
             className="w-full border rounded-lg px-4 py-2"
           />
 
@@ -183,6 +255,53 @@ export default function AdminBookingDetails() {
         </div>
 
       </div>
+
+      {booking.bookingStatus === "Cancelled" && (
+        <div className="bg-white rounded-xl shadow p-8">
+          <h2 className="text-xl font-semibold mb-6">
+            Refund Management
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <Info
+              label="Refund Status"
+              value={booking.refundStatus}
+            />
+
+            <Info
+              label="Refund Amount"
+              value={`₹${booking.refundAmount}`}
+            />
+
+            <Info
+              label="Refund Percentage"
+              value={`${booking.refundPercentage}%`}
+            />
+          </div>
+
+          {booking.refundStatus === "Pending" && (
+            <button
+              onClick={handleRefund}
+              disabled={processingRefund}
+              className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-6 py-2 rounded-lg"
+            >
+              {processingRefund ? "Processing..." : "Process Refund"}
+            </button>
+          )}
+
+          {booking.refundStatus === "Processed" && (
+            <p className="text-green-600 font-semibold">
+              ✓ Refund processed successfully
+            </p>
+          )}
+
+          {booking.refundStatus === "Failed" && (
+            <p className="text-red-600 font-semibold">
+              ✗ Refund failed
+            </p>
+          )}
+        </div>
+      )}
 
     </div>
   );

@@ -141,10 +141,49 @@ const bookingSchema = new mongoose.Schema(
       default: "",
     },
 
+
+    cancellationReason: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+
+    cancelledAt: {
+      type: Date,
+      default: null,
+    },
+
+    refundAmount: {
+      type: Number,
+      default: 0,
+    },
+
+    refundPercentage: {
+      type: Number,
+      default: 0,
+    },
+
+    refundStatus: {
+      type: String,
+      enum: ["Not Applicable", "Pending", "Processed", "Failed"],
+      default: "Not Applicable",
+    },
+
+    refundReference: {
+      type: String,
+      default: "",
+    },
+
+    refundedAt: {
+      type: Date,
+      default: null,
+    },
+
     qrCode: {
       type: String,
       default: "",
     },
+    
     isVisited: {
       type: Boolean,
       default: false,
@@ -154,7 +193,7 @@ const bookingSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
-    
+
     remarks: {
       type: String,
       default: ""
@@ -177,6 +216,10 @@ bookingSchema.index({
 
 bookingSchema.index({
   createdAt: -1
+});
+
+bookingSchema.index({
+  refundStatus: 1,
 });
 
 export default mongoose.model("Booking", bookingSchema);

@@ -6,22 +6,15 @@ import { admin } from "../middleware/admin.js";
 import {
   getAdminBookings,
   getAdminBookingById,
-  updateAdminBookingStatus,
+  updateAdminBookingStatus, processRefund
 } from "../controllers/adminBookingController.js";
 
 import {
   myBookings,
-  getBookingById,
+  getBookingById, cancelBooking, downloadTicket
 } from "../controllers/bookingController.js";
 
-import { downloadTicket } from "../controllers/bookingController.js";
-
-
 const router = express.Router();
-
-/* ================= User ================= */
-
-router.get("/my", auth, myBookings);
 
 /* ================= Admin ================= */
 
@@ -31,9 +24,16 @@ router.get("/admin/:id", auth, admin, getAdminBookingById);
 
 router.patch("/admin/:id/status", auth, admin, updateAdminBookingStatus);
 
+router.patch("/admin/:id/refund", auth, admin, processRefund);
+
 /* ================= User ================= */
 
+router.get("/my", auth, myBookings);
+
 router.get("/:id", auth, getBookingById);
+
+router.patch("/:id/cancel", auth, cancelBooking);
+
 router.get("/:id/pdf", auth, downloadTicket);
 
 export default router;
