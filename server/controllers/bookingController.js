@@ -81,7 +81,7 @@ export const cancelBooking = async (req, res) => {
       return res.status(400).json({
         message: "Visited tickets cannot be cancelled.",
       });
-    }
+    } 
 
     // Combine ticket date and slot start
     const darshanDateTime = new Date(booking.ticket.date);
