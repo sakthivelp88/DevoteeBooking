@@ -12,9 +12,13 @@ import {
     FiX,
 } from "react-icons/fi";
 
-import { useAuth } from "../../../context/AuthContext";
-import { updateProfile, uploadProfilePhoto, removeProfilePhoto, }
-    from "../../../services/adminProfileService";
+import { useAuth } from "../../../../context/AuthContext";
+
+import {
+  updateProfile,
+  uploadProfilePhoto,
+  removeProfilePhoto,
+} from "../../../../services/adminProfileService";
 
 export default function Profile() {
     const { user, setUser } = useAuth();

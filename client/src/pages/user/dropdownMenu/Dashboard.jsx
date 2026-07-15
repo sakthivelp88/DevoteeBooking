@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api/api";
+import api from "../../../services/api/api";
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {

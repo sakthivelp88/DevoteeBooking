@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import {
   getProfile,
   updateProfile,
-} from "../../../services/userService";
+} from "../../../../services/userService";
 
 const EditProfile = () => {
   const navigate = useNavigate();

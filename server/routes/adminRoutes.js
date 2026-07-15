@@ -30,4 +30,5 @@ router.delete("/profile/photo", auth, admin, removeProfilePhoto);
 
 router.put("/change-password", auth, admin, changePassword);
 
+
 export default router;
