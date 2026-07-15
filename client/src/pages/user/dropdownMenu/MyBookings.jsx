@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api/api"
+import api from "../../../services/api/api"
 import { useNavigate } from "react-router-dom";
-import { cancelBooking } from "../../services/bookingService";
+import { cancelBooking } from "../../../services/bookingService";
 import toast from "react-hot-toast";
 
 export default function MyBookings() {

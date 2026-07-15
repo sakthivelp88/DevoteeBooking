@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
+import NotificationBell from "../notification/NotificationBell";
 
 import {
   FiUser,
@@ -73,111 +74,115 @@ const Navbar = () => {
             <NavLink to="/register">Register</NavLink>
           </div>
         ) : (
-          <div
-            className="relative"
-            ref={menuRef}
-          >
-            {/* Profile Button */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="flex items-center gap-3 cursor-pointer"
+          <div className="flex items-center gap-4">
+
+            {/* Notification Bell */}
+            <NotificationBell />
+
+            {/* Profile Menu */}
+            <div
+              className="relative"
+              ref={menuRef}
             >
-              <div className="w-10 h-10 rounded-full bg-white text-orange-600 flex items-center justify-center font-bold">
-                {user.name?.charAt(0).toUpperCase()}
-              </div>
+              <button
+                onClick={() => setOpen(!open)}
+                className="flex items-center gap-3 cursor-pointer"
+              >
+                <div className="w-10 h-10 rounded-full bg-white text-orange-600 flex items-center justify-center font-bold">
+                  {user.name?.charAt(0).toUpperCase()}
+                </div>
 
-              <div className="text-left hidden sm:block">
-                <p className="text-sm font-semibold">
-                  {user.name}
-                </p>
-              </div>
-
-              <FiChevronDown
-                className={`transition-transform ${open ? "rotate-180" : ""
-                  }`}
-              />
-            </button>
-
-            {/* Dropdown */}
-            {open && (
-              <div className="absolute right-0 mt-3 w-64 bg-white text-gray-800 rounded-xl shadow-xl overflow-hidden z-50">
-
-                {/* User Info */}
-                <div className="px-4 py-4 bg-gray-50 border-b">
-                  <p className="font-semibold">
+                <div className="text-left hidden sm:block">
+                  <p className="text-sm font-semibold">
                     {user.name}
                   </p>
-
-                  <p className="text-sm text-gray-500">
-                    {user.email}
-                  </p>
                 </div>
-                <NavLink
-                  to="/profile"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
-                >
-                  <FiUser />
-                  Profile
-                </NavLink>
 
-                <NavLink
-                  to="/dashboard"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
-                >
-                  <FiHome />
-                  Dashboard
-                </NavLink>
+                <FiChevronDown
+                  className={`transition-transform ${open ? "rotate-180" : ""
+                    }`}
+                />
+              </button>
 
-                <NavLink
-                  to="/my-bookings"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
-                >
-                  <FiCalendar />
-                  My Bookings
-                </NavLink>
+              {/* Dropdown */}
+              {open && (
+                <div className="absolute right-0 mt-3 w-64 bg-white text-gray-800 rounded-xl shadow-xl overflow-hidden z-50">
 
-                <NavLink
-                  to="/change-password"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
-                >
-                  <FiLock />
-                  Change Password
-                </NavLink>
+                  {/* User Info */}
+                  <div className="px-4 py-4 bg-gray-50 border-b">
+                    <p className="font-semibold">{user.name}</p>
 
-                <NavLink
-                  to="/feedback"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
-                >
-                  <FiMessageSquare />
-                  Feedback
-                </NavLink>
+                    <p className="text-sm text-gray-500">
+                      {user.email}
+                    </p>
+                  </div>
 
-                <NavLink
-                  to="/settings"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
-                >
-                  <FiSettings />
-                  Settings
-                </NavLink>
+                  <NavLink
+                    to="/profile"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FiUser />
+                    Profile
+                  </NavLink>
 
-                <hr />
+                  <NavLink
+                    to="/dashboard"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FiHome />
+                    Dashboard
+                  </NavLink>
 
-                <button
-                  onClick={handleLogout}
-                  className="w-full flex items-center gap-3 px-4 py-3 text-red-600 
-                  hover:bg-red-50 cursor-pointer"
-                >
-                  <FiLogOut />
-                  Logout
-                </button>
-              </div>
-            )}
+                  <NavLink
+                    to="/my-bookings"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FiCalendar />
+                    My Bookings
+                  </NavLink>
+
+                  <NavLink
+                    to="/change-password"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FiLock />
+                    Change Password
+                  </NavLink>
+
+                  <NavLink
+                    to="/feedback"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FiMessageSquare />
+                    Feedback
+                  </NavLink>
+
+                  <NavLink
+                    to="/settings"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100"
+                  >
+                    <FiSettings />
+                    Settings
+                  </NavLink>
+
+                  <hr />
+
+                  <button
+                    onClick={handleLogout}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 cursor-pointer"
+                  >
+                    <FiLogOut />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

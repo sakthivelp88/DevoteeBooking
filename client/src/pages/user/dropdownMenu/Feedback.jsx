@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-import { submitFeedback } from "../../services/feedbackService";
+import { submitFeedback } from "@/services/feedbackService";
 
 export default function Feedback() {
     const navigate = useNavigate();
