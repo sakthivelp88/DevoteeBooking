@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-import BookingTable from "../../components/admin/BookingTable";
-import { getAdminBookings } from "../../services/bookingService";
+import BookingTable from "@components/admin/BookingTable";
+import { getAdminBookings } from "@services/user/bookingService";
 
 export default function AdminBookings() {
   const [bookings, setBookings] = useState([]);

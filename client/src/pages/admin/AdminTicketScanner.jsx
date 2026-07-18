@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import toast from "react-hot-toast";
-import { playSuccessSound } from "../../utils/playSuccessSound";
+import { playSuccessSound } from "@/utils/playSuccessSound";
 
 export default function AdminTicketScanner() {
     const [booking, setBooking] = useState(null);

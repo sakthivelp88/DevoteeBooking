@@ -8,7 +8,7 @@ import {
   FiRefreshCw,
 } from "react-icons/fi";
 
-import * as notificationService from "../../../../../services/notificationService";
+import * as notificationService from "@services/user/notificationService";
 
 const MessageCenter = () => {
   const [notifications, setNotifications] = useState([]);

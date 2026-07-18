@@ -1,6 +1,6 @@
 import PaymentStatusBadge from "./PaymentStatusBadge";
 
-const PaymentDetailsModal = ({ isOpen, payment, onClose }) => {
+const PaymentDetailsModal = ({ isOpen, payment, onClose, loading }) => {
     if (!isOpen || !payment) return null;
 
     const fields = [

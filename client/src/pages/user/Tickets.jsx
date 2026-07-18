@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import api from "../../services/api/api";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+
+import api from "@services/api/api";
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);

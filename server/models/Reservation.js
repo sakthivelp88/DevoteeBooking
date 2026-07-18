@@ -47,6 +47,14 @@ const reservationSchema = new mongoose.Schema(
       default: "PENDING",
     },
 
+    bookingSource: {
+      type: String,
+      enum: ["Website", "Mobile", "Admin"]
+    },
+
+    amount: Number,
+    paymentExpiresAt: Date,
+    
     expiresAt: {
       type: Date,
       required: true,

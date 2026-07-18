@@ -2,14 +2,10 @@ import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-import {
-  getDarshanTypes,
-  deleteDarshanType,
-} from "../../services/adminDarshanTypeService";
-
-import DarshanTypeTable from "../../components/admin/DarshanTypeTable";
-import DarshanTypeForm from "../../components/admin/DarshanTypeForm";
-import { getTemples } from "../../services/templeService";
+import { getDarshanTypes, deleteDarshanType,} from "@services/admin/adminDarshanTypeService";
+import DarshanTypeTable from "@components/admin/DarshanTypeTable";
+import DarshanTypeForm from "@components/admin/DarshanTypeForm";
+import { getTemples } from "@services/user/templeService";
 
 export default function AdminDarshanTypes() {
   const [darshanTypes, setDarshanTypes] = useState([]);  

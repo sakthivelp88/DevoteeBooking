@@ -2,16 +2,15 @@ import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
+import BookingSummary from "@components/booking/BookingSummary";
+import ContactInformation from "@components/booking/ContactInformation";
+import DevoteeForm from "@components/booking/DevoteeForm";
+import PaymentButton from "@components/booking/PaymentButton";
 
-import BookingSummary from "../../components/booking/BookingSummary";
-import ContactInformation from "../../components/booking/ContactInformation";
-import DevoteeForm from "../../components/booking/DevoteeForm";
-import PaymentButton from "../../components/booking/PaymentButton";
-
-import { createOrder, verifyPayment } from "../../services/paymentService";
-import { openRazorpay } from "../../utils/razorpay";
-import { validateBooking } from "../../utils/bookingValidation";
+import { createOrder, verifyPayment } from "@services/user/paymentService";
+import { openRazorpay } from "@/utils/razorpay";
+import { validateBooking } from "@/utils/bookingValidation";
 
 function BookingDetails() {
     const { state } = useLocation();

@@ -1,18 +1,30 @@
 import { useState } from "react";
-import { FiMonitor, FiSun, FiMoon } from "react-icons/fi";
+import { FiMonitor, FiSun, FiMoon, FiArrowLeft, } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 export default function AppearanceSettings() {
   const [theme, setTheme] = useState("light");
+  const navigate = useNavigate();
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-800">
-          Appearance
-        </h1>
-        <p className="text-gray-500 mt-1">
-          Customize the appearance of the admin dashboard.
-        </p>
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => navigate("/admin/settings")}
+          className="rounded-lg border p-2 hover:bg-gray-100"
+        >
+          <FiArrowLeft size={20} />
+        </button>
+
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">
+            Appearance
+          </h1>
+          <p className="text-gray-500 mt-1">
+            Customize the appearance of the admin dashboard.
+          </p>
+        </div>
       </div>
 
       <div className="rounded-xl bg-white shadow p-6 space-y-5">

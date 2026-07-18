@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
-
-import { getTemples } from "../../services/templeService";
-import { getDarshanTypesByTemple } from "../../services/darshanTypeService";
-
-import {
-    createTicket,
-    updateTicket,
-    getTicketById,
-} from "../../services/ticketService";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+
+import { getTemples } from "@services/user/templeService";
+import { getDarshanTypesByTemple } from "@services/user/darshanTypeService";
+import { createTicket, updateTicket, getTicketById,} from "@services/user/ticketService";
 
 export default function AdminCreateTicket() {
     const [formData, setFormData] = useState({

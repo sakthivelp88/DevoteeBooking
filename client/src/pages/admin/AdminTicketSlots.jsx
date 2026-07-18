@@ -7,7 +7,7 @@ import { LuLock, LuLockOpen } from "react-icons/lu";
 import {
   getTickets,
   updateTicketStatus,
-} from "../../services/ticketService";
+} from "@services/user/ticketService";
 
 export default function AdminTickets() {
   const navigate = useNavigate();

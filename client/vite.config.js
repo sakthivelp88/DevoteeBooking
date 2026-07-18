@@ -9,9 +9,15 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+ resolve: {
+  alias: {
+    "@": path.resolve(__dirname, "./src"),
+    "@components": path.resolve(__dirname, "./src/components"),
+    "@pages": path.resolve(__dirname, "./src/pages"),
+    "@services": path.resolve(__dirname, "./src/services"),
+    "@context": path.resolve(__dirname, "./src/context"),
+    // "@notification": path.resolve(__dirname, "./src/components/notification"),
+    // "@api": path.resolve(__dirname, "./src/api")
+  }
+},
 });

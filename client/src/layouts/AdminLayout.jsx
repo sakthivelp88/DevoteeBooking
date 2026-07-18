@@ -19,7 +19,7 @@ import {
 
 import { FaPlaceOfWorship } from "react-icons/fa";
 import { BsQrCodeScan } from "react-icons/bs";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 export default function AdminLayout() {
   const navigate = useNavigate();

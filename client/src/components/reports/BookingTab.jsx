@@ -1,16 +1,16 @@
 import { useEffect, useState, useCallback } from "react";
 
-import adminReportService from "../../services/adminReportService";
+import adminReportService from "@services/admin/adminReportService";
 
 import BookingFilters from "./BookingFilters";
 import BookingReportTable from "./BookingReportTable";
-import Pagination from "../../utils/pagination";
+import Pagination from "@/utils/pagination";
 
-import ReportToolbar from "../reports/ReportToolbar";
+import ReportToolbar from "./ReportToolbar";
 import {
   exportBookingToExcel,
   exportBookingToPDF,
-} from "../../utils/reportExports";
+} from "@/utils/reportExports";
 
 const DEFAULT_FILTERS = {
   search: "",

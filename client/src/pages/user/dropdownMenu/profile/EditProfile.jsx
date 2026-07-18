@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import {
-  getProfile,
-  updateProfile,
-} from "../../../../services/userService";
+import { getProfile, updateProfile,} from "@services/user/userService";
 
 const EditProfile = () => {
   const navigate = useNavigate();

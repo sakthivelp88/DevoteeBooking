@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import api from "../../../services/api/api"
-import { useNavigate } from "react-router-dom";
-import { cancelBooking } from "../../../services/bookingService";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
+import api from "@services/api/api";
+import { cancelBooking } from "@services/user/bookingService";
+
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);

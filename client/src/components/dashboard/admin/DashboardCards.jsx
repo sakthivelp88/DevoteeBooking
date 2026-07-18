@@ -11,7 +11,7 @@ import {
 import { MdTempleHindu } from "react-icons/md";
 
 import StatCard from "./StatCard";
-import { formatCurrency } from "../../../utils/formatCurrency";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 
 export default function DashboardCards({ cards }) {

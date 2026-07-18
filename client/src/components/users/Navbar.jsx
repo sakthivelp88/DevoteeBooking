@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { useAuth } from "../../context/AuthContext";
-import NotificationBell from "../notification/NotificationBell";
+import { useAuth } from "@/context/AuthContext";
+import NotificationBell from "@/components/notification/NotificationBell";
 
 import {
   FiUser,

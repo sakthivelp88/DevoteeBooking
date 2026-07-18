@@ -5,7 +5,7 @@ import {
   FiUsers,
 } from "react-icons/fi";
 
-import { formatCurrency } from "../../../utils/formatCurrency";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 const stats = [
   {

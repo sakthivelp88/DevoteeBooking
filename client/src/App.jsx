@@ -2,70 +2,69 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 // Layouts Routes
-import UserLayout from "./layouts/UserLayout";
-import AdminLayout from "./layouts/AdminLayout";
+import UserLayout from "@/layouts/UserLayout";
+import AdminLayout from "@/layouts/AdminLayout";
 
 // Auth Routes
-import ProtectedRoute from "./routes/ProtectedRoute";
-import AdminRoute from "./routes/AdminRoute";
+import ProtectedRoute from "@/routes/ProtectedRoute";
+import AdminRoute from "@/routes/AdminRoute";
 
 // User Pages Routes
-import Home from "./pages/user/Home";
-import Login from "./pages/user/Login";
-import Register from "./pages/user/Register";
-import TempleDetails from "./pages/user/TempleDetails";
-import Tickets from "./pages/user/Tickets";
-import BookingDetails from "./pages/user/BookingDetails";
-import BookingTicket from "./pages/user/BookingTicket";
-import BookingSuccess from "./pages/user/BookingSuccess";
+import Home from "@/pages/user/Home";
+import Login from "@/pages/user/Login";
+import Register from "@/pages/user/Register";
+import TempleDetails from "@/pages/user/TempleDetails";
+import Tickets from "@/pages/user/Tickets";
+import BookingDetails from "@/pages/user/BookingDetails";
+import BookingTicket from "@/pages/user/BookingTicket";
+import BookingSuccess from "@/pages/user/BookingSuccess";
 
 // User Profile Routes
-import Profile from "./pages/user/dropdownMenu/profile/Profile";
-import EditProfile from "./pages/user/dropdownMenu/profile/EditProfile";
-import Dashboard from "./pages/user/dropdownMenu/Dashboard";
-import MyBookings from "./pages/user/dropdownMenu/MyBookings"
-import ChangePassword from "./pages/user/dropdownMenu/ChangePassword";
-import Feedback from "./pages/user/dropdownMenu/Feedback";
+import Profile from "@/pages/user/dropdownMenu/profile/Profile";
+import EditProfile from "@/pages/user/dropdownMenu/profile/EditProfile";
+import Dashboard from "@/pages/user/dropdownMenu/Dashboard";
+import MyBookings from "@/pages/user/dropdownMenu/MyBookings"
+import ChangePassword from "@/pages/user/dropdownMenu/ChangePassword";
+import Feedback from "@/pages/user/dropdownMenu/Feedback";
 
 // User Settings Routes
-import Settings from "./pages/user/dropdownMenu/settings/Settings";
-import Notifications from "./pages/user/dropdownMenu/settings/Notifications";
-import MessageCenter from "./pages/user/dropdownMenu/settings/notifications/MessageCenter";
-import MessageDetails from "./pages/user/dropdownMenu/settings/notifications/MessageDetails";
-import Appearance from "./pages/user/dropdownMenu/settings/Appearance";
-import ReminderSettings from "./pages/user/dropdownMenu/settings/ReminderSettings";
-import About from "./pages/user/dropdownMenu/settings/About";
+import Settings from "@/pages/user/dropdownMenu/settings/Settings";
+import Notifications from "@/pages/user/dropdownMenu/settings/Notifications";
+import MessageCenter from "@/pages/user/dropdownMenu/settings/notifications/MessageCenter";
+import MessageDetails from "@/pages/user/dropdownMenu/settings/notifications/MessageDetails";
+import Appearance from "@/pages/user/dropdownMenu/settings/Appearance";
+import ReminderSettings from "@/pages/user/dropdownMenu/settings/ReminderSettings";
+import About from "@/pages/user/dropdownMenu/settings/About";
 
 // Admin Pages Routes
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminTemples from "./pages/admin/AdminTemples";
-import AdminDarshanTypes from "./pages/admin/AdminDarshanTypes";
-import AdminTicketSlots from "./pages/admin/AdminTicketSlots";
-import AdminBookings from "./pages/admin/AdminBookings";
-import AdminCreateTicket from "./pages/admin/AdminCreateTicket";
-import AdminBookingDetails from "./pages/admin/AdminBookingDetails";
-import PaymentManagement from "./pages/admin/PaymentManagement";
-import ReportsAnalytics from "./pages/admin/AdminReportsAnalytics";
-import UserManagement from "./pages/admin/UserManagement";
-import AdminTicketScanner from "./pages/admin/AdminTicketScanner";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import AdminTemples from "@/pages/admin/AdminTemples";
+import AdminDarshanTypes from "@/pages/admin/AdminDarshanTypes";
+import AdminTicketSlots from "@/pages/admin/AdminTicketSlots";
+import AdminBookings from "@/pages/admin/AdminBookings";
+import AdminCreateTicket from "@/pages/admin/AdminCreateTicket";
+import AdminBookingDetails from "@/pages/admin/AdminBookingDetails";
+import PaymentManagement from "@/pages/admin/PaymentManagement";
+import ReportsAnalytics from "@/pages/admin/AdminReportsAnalytics";
+import UserManagement from "@/pages/admin/UserManagement";
+import AdminTicketScanner from "@/pages/admin/AdminTicketScanner";
 
 // Admin Profile Routes
-import AdminProfile from "./pages/admin/dropdownMenu/profile/Profile";
-import AdminChangePassword from "./pages/admin/dropdownMenu/ChangePassword";
+import AdminProfile from "@/pages/admin/dropdownMenu/profile/Profile";
+import AdminChangePassword from "@/pages/admin/dropdownMenu/ChangePassword";
 
 // Admin Feedback Routes
-import AdminFeedback from "./pages/admin/AdminFeedback";
+import AdminFeedback from "@/pages/admin/AdminFeedback";
 
 // Admin Settings Routes
-import AdminSettings from "./pages/admin/dropdownMenu/settings/AdminSettings";
-import NotificationSettings from "./pages/admin/dropdownMenu/settings/NotificationSettings";
-import AdminNotifications from "./pages/admin/dropdownMenu/settings/notifications/AdminNotifications";
-import NotificationForm from "./pages/admin/dropdownMenu/settings/notifications/NotificationForm";
-import NotificationDetails from "./pages/admin/dropdownMenu/settings/notifications/NotificationDetails";
-import AppearanceSettings from "./pages/admin/dropdownMenu/settings/AppearanceSettings";
-import AdminReminderSettings from "./pages/admin/dropdownMenu/settings/ReminderSettings";
-import AboutSettings from "./pages/admin/dropdownMenu/settings/AboutSettings";
-
+import AdminSettings from "@/pages/admin/dropdownMenu/settings/AdminSettings";
+import NotificationSettings from "@/pages/admin/dropdownMenu/settings/NotificationSettings";
+import AdminNotifications from "@/pages/admin/dropdownMenu/settings/notifications/AdminNotifications";
+import NotificationForm from "@/pages/admin/dropdownMenu/settings/notifications/NotificationForm";
+import NotificationDetails from "@/pages/admin/dropdownMenu/settings/notifications/NotificationDetails";
+import AppearanceSettings from "@/pages/admin/dropdownMenu/settings/AppearanceSettings";
+import AdminReminderSettings from "@/pages/admin/dropdownMenu/settings/ReminderSettings";
+import AboutSettings from "@/pages/admin/dropdownMenu/settings/AboutSettings";
 
 function App() {
   return (
@@ -74,7 +73,7 @@ function App() {
       <Toaster position="top-right" />
 
       <Routes>
-        
+
         {/* ================= USER LAYOUT ================= */}
 
         <Route element={<UserLayout />}>
@@ -202,7 +201,7 @@ function App() {
 
         </Route>
 
-        {/* ================= ADMIN LAYOUT ================= */}        
+        {/* ================= ADMIN LAYOUT ================= */}
 
         <Route path="/admin" element={
           <AdminRoute>
@@ -211,7 +210,7 @@ function App() {
         }
         >
           <Route index element={<AdminDashboard />}
-        />
+          />
           <Route path="temples" element={<AdminTemples />}
           />
           <Route path="darshan-types" element={<AdminDarshanTypes />}
@@ -251,6 +250,8 @@ function App() {
           />
           <Route path="settings/notifications/create" element={<NotificationForm />}
           />
+          <Route path="settings/notifications/edit/:id" element={<NotificationForm />}
+          />
           <Route path="settings/notifications/:id" element={<NotificationDetails />}
           />
           <Route path="settings/appearance" element={<AppearanceSettings />}
@@ -274,7 +275,7 @@ function App() {
         />
 
       </Routes>
-      
+
     </BrowserRouter>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getTempleById } from "../../services/templeService";
-import { getDarshanTypesByTemple, } from "../../services/darshanTypeService";
+import { getTempleById } from "@services/user/templeService";
+import { getDarshanTypesByTemple, } from "@services/user/darshanTypeService";
 
 const TempleDetails = () => {
   const { id } = useParams();

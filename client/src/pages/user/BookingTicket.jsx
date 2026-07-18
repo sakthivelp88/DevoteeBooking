@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getBookingById } from "../../services/bookingService";
+import { getBookingById } from "@services/user/bookingService";
 
 export default function BookingTicket() {
 

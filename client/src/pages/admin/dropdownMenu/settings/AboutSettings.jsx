@@ -1,20 +1,28 @@
-import {
-  FiInfo,
-  FiCode,
-  FiShield,
-  FiMail,
-} from "react-icons/fi";
+import { FiInfo, FiCode, FiShield, FiMail, FiArrowLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 export default function AboutSettings() {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-800">
-          About System
-        </h1>
-        <p className="text-gray-500 mt-1">
-          Information about the Devotee Booking Admin Panel.
-        </p>
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => navigate("/admin/settings")}
+          className="rounded-lg border p-2 hover:bg-gray-100"
+        >
+          <FiArrowLeft size={20} />
+        </button>
+
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">
+            About System
+          </h1>
+          <p className="text-gray-500 mt-1">
+            Information about the Devotee Booking Admin Panel.
+          </p>
+        </div>
       </div>
 
       <div className="rounded-xl bg-white shadow p-6 space-y-5">

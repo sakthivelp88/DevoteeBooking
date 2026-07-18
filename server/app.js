@@ -3,31 +3,32 @@ import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import path from "path";
+import 'module-alias/register';
 
 //User Routes
-import authRoutes from "./routes/authRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import ticketRoutes from "./routes/ticketRoutes.js";
-import bookingRoutes from "./routes/bookingRoutes.js";
-import paymentRoutes from "./routes/paymentRoutes.js";
-import dashboardRoutes from "./routes/dashboardRoutes.js";
-import templeRoutes from "./routes/templeRoutes.js";
-import darshanTypeRoutes from "./routes/darshanTypeRoutes.js";
+import authRoutes from "./routes/user/authRoutes.js";
+import userRoutes from "./routes/user/userRoutes.js";
+import ticketRoutes from "./routes/user/ticketRoutes.js";
+import bookingRoutes from "./routes/user/bookingRoutes.js";
+import paymentRoutes from "./routes/user/paymentRoutes.js";
+import dashboardRoutes from "./routes/user/dashboardRoutes.js";
+import templeRoutes from "./routes/user/templeRoutes.js";
+import darshanTypeRoutes from "./routes/user/darshanTypeRoutes.js";
 
 // User DropdownMenu Routes
-import feedbackRoutes from "./routes/feedbackRoutes.js";
-import notificationRoutes from "./routes/notificationRoutes.js";
+import feedbackRoutes from "./routes/user/feedbackRoutes.js";
+import notificationRoutes from "./routes/user/notificationRoutes.js";
 
 // Admin Routes
-import adminRoutes from "./routes/adminRoutes.js";
-import adminPaymentRoutes from "./routes/adminPaymentRoutes.js";
-import adminReportRoutes from "./routes/adminReportRoutes.js";
-import adminUserRoutes from "./routes/adminUserRoutes.js";
-import adminTicketVerificationRoutes from "./routes/adminTicketVerificationRoutes.js";
+import adminRoutes from "./routes/admin/adminRoutes.js";
+import adminPaymentRoutes from "./routes/admin/adminPaymentRoutes.js";
+import adminReportRoutes from "./routes/admin/adminReportRoutes.js";
+import adminUserRoutes from "./routes/admin/adminUserRoutes.js";
+import adminTicketVerificationRoutes from "./routes/admin/adminTicketVerificationRoutes.js";
 
 // Admin DropdownMenu Routes
-import adminFeedbackRoutes from "./routes/adminFeedbackRoutes.js"
-import adminNotificationRoutes from "./routes/adminNotificationRoutes.js";
+import adminFeedbackRoutes from "./routes/admin/adminFeedbackRoutes.js"
+import adminNotificationRoutes from "./routes/admin/adminNotificationRoutes.js";
 
 const app = express();
 

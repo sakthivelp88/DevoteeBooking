@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import adminReportService from "../../services/adminReportService";
+import adminReportService from "@services/admin/adminReportService";
 
 import SummaryCards from "./SummaryCards";
 import MonthlyRevenueChart from "./MonthlyRevenueChart";

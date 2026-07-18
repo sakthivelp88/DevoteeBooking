@@ -8,6 +8,21 @@ const feedbackSchema = new mongoose.Schema(
       required: true,
     },
 
+    temple: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Temple"
+    },
+
+    booking: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Booking"
+    },
+
+    reviewedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+
     message: {
       type: String,
       required: true,
@@ -26,6 +41,8 @@ const feedbackSchema = new mongoose.Schema(
       enum: ["Pending", "Reviewed"],
       default: "Pending",
     },
+    
+    repliedAt: Date,
   },
   {
     timestamps: true,

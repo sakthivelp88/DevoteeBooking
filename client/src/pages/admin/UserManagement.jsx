@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
 import toast  from "react-hot-toast";
 
-import {
-    getUsers,
-    updateUser,
-    updateUserStatus,
-    deleteUser,
-} from "../../services/adminUserService";
-
-import UserFilters from "../../components/admin/users/UserFilters";
-import UserTable from "../../components/admin/users/UserTable";
-import Pagination from "../../components/admin/users/Pagination";
-import UserDetailsModal from "../../components/admin/users/UserDetailsModal";
-import UserEditModal from "../../components/admin/users/UserEditModal";
-import UserDeleteModal from "../../components/admin/users/UserDeleteModal";
+import { getUsers, updateUser, updateUserStatus, deleteUser,} from "@services/admin/adminUserService";
+import UserFilters from "@components/admin/users/UserFilters";
+import UserTable from "@components/admin/users/UserTable";
+import Pagination from "@components/admin/users/Pagination";
+import UserDetailsModal from "@components/admin/users/UserDetailsModal";
+import UserEditModal from "@components/admin/users/UserEditModal";
+import UserDeleteModal from "@components/admin/users/UserDeleteModal";
 
 const UserManagement = () => {
 

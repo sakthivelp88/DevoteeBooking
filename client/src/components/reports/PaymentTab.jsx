@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-import adminReportService from "../../services/adminReportService";
+import adminReportService from "@services/admin/adminReportService";
 
 import ReportToolbar from "./ReportToolbar";
 import PaymentFilters from "./PaymentFilters";
 import PaymentReportTable from "./PaymentReportTable";
-import Pagination from "../../utils/pagination";
+import Pagination from "@/utils/pagination";
 
 import {
   exportPaymentToExcel,
   exportPaymentToPDF,
-} from "../../utils/reportExports";
+} from "@/utils/reportExports";
 
 const DEFAULT_FILTERS = {
   search: "",

@@ -1,4 +1,4 @@
-import api from "../api/api"; // localhost path directory
+import api from "@/services/api/api"; // localhost path directory
 
 export const register = async (userData) => {
   const response = await api.post(`auth/register`, userData, {

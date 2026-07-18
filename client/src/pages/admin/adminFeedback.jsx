@@ -5,7 +5,7 @@ import { FiEye } from "react-icons/fi";
 import {
     getAllFeedback,
     reviewFeedback, deleteFeedback,
-} from "../../services/adminFeedbackService";
+} from "@services/admin/adminFeedbackService";
 
 export default function AdminFeedback() {
     const [feedbacks, setFeedbacks] = useState([]);
