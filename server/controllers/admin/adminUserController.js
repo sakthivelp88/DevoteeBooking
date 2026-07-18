@@ -49,6 +49,7 @@ export const getUsers = async (req, res) => {
         const totalPages = Math.ceil(totalRecords / perPage);
 
         res.json({
+            success:true,
             users,
 
             pagination: {

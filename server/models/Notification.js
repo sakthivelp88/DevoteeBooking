@@ -109,8 +109,8 @@ const notificationSchema = new mongoose.Schema(
       default: null,
     },
 
-    action: String,
-    image: String,
+    // action: String,
+    // image: String,
 
     isDeleted: {
       type: Boolean,
