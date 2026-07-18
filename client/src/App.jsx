@@ -30,11 +30,12 @@ import Feedback from "@/pages/user/dropdownMenu/Feedback";
 // User Settings Routes
 import Settings from "@/pages/user/dropdownMenu/settings/Settings";
 import Notifications from "@/pages/user/dropdownMenu/settings/Notifications";
-import MessageCenter from "@/pages/user/dropdownMenu/settings/notifications/MessageCenter";
-import MessageDetails from "@/pages/user/dropdownMenu/settings/notifications/MessageDetails";
 import Appearance from "@/pages/user/dropdownMenu/settings/Appearance";
 import ReminderSettings from "@/pages/user/dropdownMenu/settings/ReminderSettings";
 import About from "@/pages/user/dropdownMenu/settings/About";
+
+import MessageCenter from "@/pages/user/dropdownMenu/settings/notifications/MessageCenter";
+import MessageDetails from "@/pages/user/dropdownMenu/settings/notifications/MessageDetails";
 
 // Admin Pages Routes
 import AdminDashboard from "@/pages/admin/AdminDashboard";
@@ -58,13 +59,16 @@ import AdminFeedback from "@/pages/admin/AdminFeedback";
 
 // Admin Settings Routes
 import AdminSettings from "@/pages/admin/dropdownMenu/settings/AdminSettings";
-import NotificationSettings from "@/pages/admin/dropdownMenu/settings/NotificationSettings";
-import AdminNotifications from "@/pages/admin/dropdownMenu/settings/notifications/AdminNotifications";
-import NotificationForm from "@/pages/admin/dropdownMenu/settings/notifications/NotificationForm";
-import NotificationDetails from "@/pages/admin/dropdownMenu/settings/notifications/NotificationDetails";
-import AppearanceSettings from "@/pages/admin/dropdownMenu/settings/AppearanceSettings";
-import AdminReminderSettings from "@/pages/admin/dropdownMenu/settings/ReminderSettings";
-import AboutSettings from "@/pages/admin/dropdownMenu/settings/AboutSettings";
+
+import AdminAppearanceSettings from "@/pages/admin/dropdownMenu/settings/appearance/AppearanceSettings";
+import AdminReminderSettings from "@/pages/admin/dropdownMenu/settings/reminder/ReminderSettings";
+import AdminAboutSettings from "@/pages/admin/dropdownMenu/settings/about/AboutSettings";
+
+// Under AdminNotification Settings
+import AdminNotificationSettings from "@/pages/admin/dropdownMenu/settings/notification/NotificationSettings";
+import AdminNotificationManagement from "@/pages/admin/dropdownMenu/settings/notification/NotificationManagement";
+import AdminNotificationForm from "@/pages/admin/dropdownMenu/settings/notification/NotificationForm";
+import AdminNotificationDetails from "@/pages/admin/dropdownMenu/settings/notification/NotificationDetails";
 
 function App() {
   return (
@@ -244,21 +248,23 @@ function App() {
           />
           <Route path="settings" element={<AdminSettings />}
           />
-          <Route path="settings/notifications" element={<NotificationSettings />}
+          <Route path="settings/notifications" element={<AdminNotificationSettings />}
           />
-          <Route path="settings/notifications/manage" element={<AdminNotifications />}
-          />
-          <Route path="settings/notifications/create" element={<NotificationForm />}
-          />
-          <Route path="settings/notifications/edit/:id" element={<NotificationForm />}
-          />
-          <Route path="settings/notifications/:id" element={<NotificationDetails />}
-          />
-          <Route path="settings/appearance" element={<AppearanceSettings />}
+          <Route path="settings/appearance" element={<AdminAppearanceSettings />}
           />
           <Route path="settings/reminders" element={<AdminReminderSettings />}
           />
-          <Route path="settings/about" element={<AboutSettings />}
+          <Route path="settings/about" element={<AdminAboutSettings />}
+          />
+          
+          // Under AdminNotification Settings
+          <Route path="settings/notifications/manage" element={<AdminNotificationManagement />}
+          />
+          <Route path="settings/notifications/create" element={<AdminNotificationForm />}
+          />
+          <Route path="settings/notifications/edit/:id" element={<AdminNotificationForm />}
+          />
+          <Route path="settings/notifications/:id" element={<AdminNotificationDetails />}
           />
 
         </Route>

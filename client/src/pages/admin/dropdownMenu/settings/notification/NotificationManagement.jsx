@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FiPlus, FiEye, FiTrash2, FiSearch, FiEdit, FiArrowLeft } from "react-icons/fi";
+import { FiPlus, FiEye, FiTrash2, FiSearch, FiArrowLeft } from "react-icons/fi";
 
 import {
     getAdminNotifications,
@@ -303,7 +303,7 @@ const AdminNotifications = () => {
                             <th className="px-5 py-3 text-left">Status</th>
                             <th className="px-5 py-3 text-left">Date</th>
                             <th className="px-5 py-3 text-center">
-                                Actions
+                                Status
                             </th>
                         </tr>
 
@@ -380,18 +380,7 @@ const AdminNotifications = () => {
                                                 className="text-blue-600 hover:text-blue-800"
                                             >
                                                 <FiEye size={18} />
-                                            </button>
-
-                                            <button
-                                                onClick={() =>
-                                                    navigate(
-                                                        `/admin/settings/notifications/edit/${notification._id}`
-                                                    )
-                                                }
-                                                className="text-green-600 hover:text-green-800"
-                                            >
-                                                <FiEdit size={18} />
-                                            </button>
+                                            </button>                                            
 
                                             <button
                                                 onClick={() =>

@@ -92,6 +92,8 @@ const NotificationDetails = () => {
             </p>
         );
     }
+    
+    const canEdit = !["sent", "cancelled", "failed"].includes(notification.status);
 
     return (
         <div className="mx-auto max-w-5xl space-y-8">
@@ -170,9 +172,8 @@ const NotificationDetails = () => {
                         </p>
 
                         <span
-                            className={`mt-2 inline-block rounded-full px-3 py-1 text-sm ${
-                                STATUS_CLASS[notification.status]
-                            }`}
+                            className={`mt-2 inline-block rounded-full px-3 py-1 text-sm ${STATUS_CLASS[notification.status]
+                                }`}
                         >
                             {notification.status}
                         </span>
@@ -281,12 +282,14 @@ const NotificationDetails = () => {
                 <div className="flex flex-wrap justify-end gap-3 border-t pt-6">
 
                     <button
+                        disabled={!canEdit}
                         onClick={() =>
-                            navigate(
-                                `/admin/settings/notifications/edit/${notification._id}`
-                            )
+                            navigate(`/admin/settings/notifications/edit/${notification._id}`)
                         }
-                        className="flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700"
+                        className={`flex items-center gap-2 rounded-lg px-5 py-2 text-white ${canEdit
+                                ? "bg-blue-600 hover:bg-blue-700"
+                                : "cursor-not-allowed bg-gray-400"
+                            }`}
                     >
                         <FiEdit />
                         Edit

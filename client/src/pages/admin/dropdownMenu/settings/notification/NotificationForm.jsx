@@ -39,18 +39,23 @@ const NotificationForm = () => {
     try {
       const res = await getUsers();
 
+      console.log("API Response:", res);
+      console.log("Users:", res.users);
+
       if (res.success) {
         setUsers(res.users);
       }
     } catch (err) {
       console.error(err);
+      console.error("Error loading users:", err);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({...prev, [name]: value,
+    setFormData((prev) => ({
+      ...prev, [name]: value,
       ...(name === "status" && value === "draft"
         ? { scheduledAt: "" }
         : {}),
@@ -205,7 +210,7 @@ const NotificationForm = () => {
 
             <select
               name="user"
-              value={formData.user}
+              value={formData?.user}
               onChange={handleChange}
               className="w-full rounded-lg border p-3"
               required
@@ -258,7 +263,7 @@ const NotificationForm = () => {
           />
         </div>
 
-        {/* Type */}
+        {/* Notification Type */}
 
         <div>
           <label className="mb-2 block font-medium">
