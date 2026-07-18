@@ -171,7 +171,7 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main Section */}
-      <div className="ml-72 flex flex-1 flex-col bg-slate-100">
+      <div className="ml-72 flex flex-1 flex-col bg-slate-100 dark:bg-slate-900">
 
         {/* Topbar */}
         <header className="sticky top-0 z-40 flex items-center justify-between border-b border-orange-500 bg-orange-600 px-8 py-5 text-white shadow-lg backdrop-blur">
@@ -292,7 +292,7 @@ export default function AdminLayout() {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto bg-slate-100 p-8">
+        <main className="flex-1 overflow-y-auto bg-slate-100 dark:bg-slate-900 p-8">
           <Outlet />
         </main>
 

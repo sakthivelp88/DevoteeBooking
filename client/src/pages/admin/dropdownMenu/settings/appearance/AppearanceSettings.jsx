@@ -2,8 +2,10 @@ import { useState } from "react";
 import { FiMonitor, FiSun, FiMoon, FiArrowLeft, } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
+import { useTheme } from "@/context/ThemeContext";
+
 export default function AppearanceSettings() {
-  const [theme, setTheme] = useState("light");
+  const { theme, changeTheme } = useTheme();
   const navigate = useNavigate();
 
   return (
@@ -38,7 +40,7 @@ export default function AppearanceSettings() {
           <input
             type="radio"
             checked={theme === "light"}
-            onChange={() => setTheme("light")}
+            onChange={() => changeTheme("light")}
           />
         </label>
 
@@ -51,7 +53,7 @@ export default function AppearanceSettings() {
           <input
             type="radio"
             checked={theme === "dark"}
-            onChange={() => setTheme("dark")}
+            onChange={() => changeTheme("dark")}
           />
         </label>
 
@@ -64,7 +66,7 @@ export default function AppearanceSettings() {
           <input
             type="radio"
             checked={theme === "system"}
-            onChange={() => setTheme("system")}
+            onChange={() => changeTheme("system")}
           />
         </label>
 

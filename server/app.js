@@ -29,6 +29,7 @@ import adminTicketVerificationRoutes from "./routes/admin/adminTicketVerificatio
 // Admin DropdownMenu Routes
 import adminFeedbackRoutes from "./routes/admin/adminFeedbackRoutes.js"
 import adminNotificationRoutes from "./routes/admin/adminNotificationRoutes.js";
+import adminAppearanceRoutes from "./routes/admin/adminAppearanceRoutes.js";
 
 const app = express();
 
@@ -67,6 +68,7 @@ app.use("/api/admin/reports", adminReportRoutes);
 app.use("/api/admin/bookings", adminTicketVerificationRoutes);
 app.use("/api/admin/feedback", adminFeedbackRoutes);
 app.use("/api/admin/notifications", adminNotificationRoutes);
+app.use("/api/admin/settings", adminAppearanceRoutes);
 
 // User Middleware
 app.use("/api/auth", authRoutes);
