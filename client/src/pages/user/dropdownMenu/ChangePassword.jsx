@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import { changePassword } from "../../../services/userService";
+import { changePassword } from "@services/user/userService";
 
 const ChangePassword = () => {
 

@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import ReportsTabs from "../../components/tabs/ReportsTabs";
+import ReportsTabs from "@components/tabs/ReportsTabs";
 
-import AnalyticsDashboard from "../../components/reports/AnalyticsDashboard";
-import RevenueTab from "../../components/reports/RevenueTab";
-import BookingTab from "../../components/reports/BookingTab";
-import PaymentTab from "../../components/reports/PaymentTab";
+import AnalyticsDashboard from "@components/reports/AnalyticsDashboard";
+import RevenueTab from "@components/reports/RevenueTab";
+import BookingTab from "@components/reports/BookingTab";
+import PaymentTab from "@components/reports/PaymentTab";
 
 const AdminReportsAnalytics = () => {
   const [activeTab, setActiveTab] = useState("analytics");

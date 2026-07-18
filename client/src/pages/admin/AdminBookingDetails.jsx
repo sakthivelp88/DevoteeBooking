@@ -5,9 +5,9 @@ import { toast } from "react-hot-toast";
 import {
   getAdminBookingById,
   updateBookingStatus, processRefund
-} from "../../services/bookingService";
+} from "@services/user/bookingService";
 
-import AdminStatusBadge from "../../components/admin/AdminStatusBadge";
+import AdminStatusBadge from "@components/admin/AdminStatusBadge";
 
 export default function AdminBookingDetails() {
   const { id } = useParams();

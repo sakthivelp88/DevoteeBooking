@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import {
     createTemple,
     updateTemple
-} from "../../services/templeService";
+} from "@services/user/templeService";
 
 export default function TempleForm({
     temple,

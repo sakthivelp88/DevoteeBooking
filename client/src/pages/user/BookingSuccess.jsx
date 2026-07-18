@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import { getBookingById } from "../../services/bookingService";
+import { getBookingById } from "@services/user/bookingService";
 
 function BookingSuccess() {
     const { id } = useParams();

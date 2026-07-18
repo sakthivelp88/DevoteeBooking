@@ -25,6 +25,18 @@ const darshanTypeSchema = new mongoose.Schema(
       default: 0,
     },
 
+    maxBookingPerUser: {
+      type: Number,
+      default: 6
+    },
+
+    minimumAge: Number,
+
+    onlineBooking: {
+      type: Boolean,
+      default: true
+    },
+
     duration: {
       type: String,
       default: "",

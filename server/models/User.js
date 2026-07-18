@@ -35,6 +35,11 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
 
+    profileCompleted: {
+      type: Boolean,
+      default: false,
+    },
+
     gender: {
       type: String,
       enum: ["Male", "Female", "Other"],
@@ -60,7 +65,7 @@ const userSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["active", "blocked"],      
+      enum: ["active", "blocked"],
       default: "active",
     },
 
@@ -86,6 +91,10 @@ const userSchema = new mongoose.Schema(
     },
 
     notificationSettings: {
+      inApp: {
+        type: Boolean,
+        default: true,
+      },
       email: {
         type: Boolean,
         default: true,
@@ -104,9 +113,19 @@ const userSchema = new mongoose.Schema(
       type: Date,
     },
 
+    lastLoginIP: {
+      String,
+      lastLoginDevice: String,
+    },
+
     isEmailVerified: {
       type: Boolean,
       default: false,
+    },
+
+    refreshToken: {
+      type: String,
+      default: "",
     },
   },
   {

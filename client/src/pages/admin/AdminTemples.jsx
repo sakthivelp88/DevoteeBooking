@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-import TempleTable from "../../components/admin/TempleTable";
-import TempleForm from "../../components/admin/TempleForm";
-import DeleteConfirmModal from "../../components/admin/DeleteConfirmModal";
+import TempleTable from "@components/admin/TempleTable";
+import TempleForm from "@components/admin/TempleForm";
+import DeleteConfirmModal from "@components/admin/DeleteConfirmModal";
 
 import {
   getTemples,
   deleteTemple,
-} from "../../services/templeService";
+} from "@services/user/templeService";
 
 export default function AdminTemples() {
   const [temples, setTemples] = useState([]);

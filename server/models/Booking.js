@@ -183,7 +183,7 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    
+
     isVisited: {
       type: Boolean,
       default: false,
@@ -192,6 +192,38 @@ const bookingSchema = new mongoose.Schema(
     visitedAt: {
       type: Date,
       default: null,
+    },
+
+    statusHistory: [
+      {
+        status: {
+          type: String,
+        },
+        updatedAt: {
+          type: Date,
+          default: Date.now,
+        },
+        updatedBy: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      },
+    ],
+
+    notifications: {
+      bookingConfirmed: Boolean,
+      reminder: Boolean,
+      cancelled: Boolean,
+      refunded: Boolean
+    },
+
+    invoiceNumber: String,
+
+    adminRemarks: String,
+
+    checkedInBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
     },
 
     remarks: {

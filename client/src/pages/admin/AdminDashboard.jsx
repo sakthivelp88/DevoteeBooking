@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { FiRefreshCw } from "react-icons/fi";
-import { getDashboardStats } from "../../services/adminDashboardService";
 
-import DashboardCards from "../../components/dashboard/admin/DashboardCards";
-import RevenueChart from "../../components/dashboard/admin/RevenueChart";
-import BookingStatusChart from "../../components/dashboard/admin/BookingStatusChart";
-import RecentBookingsTable from "../../components/dashboard/admin/RecentBookingsTable";
-import RecentPaymentsTable from "../../components/dashboard/admin/RecentPaymentsTable";
-import TempleBookingChart from "../../components/dashboard/admin/TempleBookingChart";
-import DarshanPopularityChart from "../../components/dashboard/admin/DarshanPopularityChart";
-import TodayStats from "../../components/dashboard/admin/TodayStats";
-import PaymentStatusChart from "../../components/dashboard/admin/PaymentStatusChart";
-import LowSeatAlerts from "../../components/dashboard/admin/LowSeatAlerts";
-import UpcomingTickets from "../../components/dashboard/admin/UpcomingTickets";
-import TopRevenueTemples from "../../components/dashboard/admin/TopRevenueTemples";
-import RecentUsers from "../../components/dashboard/admin/RecentUsers";
-import RecentActivity from "../../components/dashboard/admin/RecentActivity";
-import QuickActions from "../../components/dashboard/admin/QuickActions";
+import { getDashboardStats } from "@services/admin/adminDashboardService";
+import DashboardCards from "@components/dashboard/admin/DashboardCards";
+import RevenueChart from "@components/dashboard/admin/RevenueChart";
+import BookingStatusChart from "@components/dashboard/admin/BookingStatusChart";
+import RecentBookingsTable from "@components/dashboard/admin/RecentBookingsTable";
+import RecentPaymentsTable from "@components/dashboard/admin/RecentPaymentsTable";
+import TempleBookingChart from "@components/dashboard/admin/TempleBookingChart";
+import DarshanPopularityChart from "@components/dashboard/admin/DarshanPopularityChart";
+import TodayStats from "@components/dashboard/admin/TodayStats";
+import PaymentStatusChart from "@components/dashboard/admin/PaymentStatusChart";
+import LowSeatAlerts from "@components/dashboard/admin/LowSeatAlerts";
+import UpcomingTickets from "@components/dashboard/admin/UpcomingTickets";
+import TopRevenueTemples from "@components/dashboard/admin/TopRevenueTemples";
+import RecentUsers from "@components/dashboard/admin/RecentUsers";
+import RecentActivity from "@components/dashboard/admin/RecentActivity";
+import QuickActions from "@components/dashboard/admin/QuickActions";
 
 export default function AdminDashboard() {
   const [dashboard, setDashboard] = useState(null);

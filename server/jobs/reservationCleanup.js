@@ -1,8 +1,8 @@
 import cron from "node-cron";
 
-import Reservation from "../models/Reservation.js";
+import Reservation from "#models/Reservation.js";
 
-import Ticket from "../models/Ticket.js";
+import Ticket from "#models/Ticket.js";
 
 cron.schedule("* * * * *", async () => {
 

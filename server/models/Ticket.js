@@ -44,11 +44,18 @@ const ticketSchema = new mongoose.Schema(
     availableSeats: {
       type: Number,
       min: 0,
-    },
+    },   
 
     bookingStart: {
       type: Date,
     },
+
+    reservedSeats: {
+      type: Number,
+      default: 0
+    },
+    
+    slotName:String,
 
     bookingEnd: {
       type: Date,

@@ -1,6 +1,6 @@
 import { Eye } from "lucide-react";
 
-import AdminStatusBadge from "./AdminStatusBadge";
+import AdminStatusBadge from "@components/admin/AdminStatusBadge";
 
 export default function BookingTable({
   bookings,

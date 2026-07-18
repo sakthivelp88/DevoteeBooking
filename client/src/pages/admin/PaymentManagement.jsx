@@ -1,21 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 
-import PaymentCards from "../../components/payment/PaymentCards";
-import PaymentFilters from "../../components/payment/PaymentFilters";
-import PaymentTable from "../../components/payment/PaymentTable";
-import PaymentDetailsModal from "../../components/payment/PaymentDetailsModal";
-import PaymentReceiptModal from "../../components/payment/PaymentReceiptModal";
-import {
-    exportPaymentsToExcel,
-    exportPaymentsToPDF,
-} from "../../utils/paymentExport";
-
-import {
-    getPayments,
-    getPaymentById,
-} from "../../services/adminPaymentService";
-import { getPaymentStatistics } from "../../utils/paymentStatistics";
-
+import PaymentCards from "@components/payment/PaymentCards";
+import PaymentFilters from "@components/payment/PaymentFilters";
+import PaymentTable from "@components/payment/PaymentTable";
+import PaymentDetailsModal from "@components/payment/PaymentDetailsModal";
+import PaymentReceiptModal from "@components/payment/PaymentReceiptModal";
+import { exportPaymentsToExcel, exportPaymentsToPDF,} from "@/utils/paymentExport";
+import { getPayments, getPaymentById,} from "@services/admin/adminPaymentService";
+import { getPaymentStatistics } from "@/utils/paymentStatistics";
 
 const PaymentManagement = () => {
     const [payments, setPayments] = useState([]);
