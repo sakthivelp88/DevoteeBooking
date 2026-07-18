@@ -114,8 +114,11 @@ const userSchema = new mongoose.Schema(
     },
 
     lastLoginIP: {
-      String,
-      lastLoginDevice: String,
+      type: String,
+    },
+
+    lastLoginDevice: {
+      type: String,
     },
 
     isEmailVerified: {
