@@ -43,14 +43,14 @@ const settingItems = [
 
 const Settings = () => {
   return (
-    <div className="max-w-5xl mx-auto py-10 px-4">
+    <div className="mx-auto max-w-5xl px-4 py-10 text-slate-900 dark:text-slate-100">
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">
+        <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100">
           Settings
         </h1>
-        <p className="text-gray-500 mt-2">
+        <p className="mt-2 text-gray-500 dark:text-slate-400">
           Manage your preferences and application settings.
         </p>
       </div>
@@ -61,26 +61,26 @@ const Settings = () => {
           <Link
             key={item.title}
             to={item.path}
-            className="flex items-center justify-between p-5 bg-white rounded-xl shadow hover:shadow-md transition-all duration-200 border border-gray-100"
+            className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-5 shadow transition-all duration-200 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-950/40 dark:text-orange-400">
                 {item.icon}
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg text-gray-800">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-slate-400">
                   {item.description}
                 </p>
               </div>
             </div>
 
             <FiChevronRight
-              className="text-gray-400"
+              className="text-gray-400 dark:text-slate-500"
               size={22}
             />
           </Link>

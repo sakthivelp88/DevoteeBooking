@@ -49,9 +49,9 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto bg-white shadow rounded-lg p-6 mt-10">
+    <div className="mx-auto mt-10 max-w-lg rounded-xl border border-slate-200 bg-white p-6 shadow dark:border-slate-700 dark:bg-slate-800">
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="mb-6 text-2xl font-bold text-slate-800 dark:text-slate-100">
         Change Password
       </h2>
 
@@ -66,7 +66,7 @@ const ChangePassword = () => {
           placeholder="Current Password"
           value={form.currentPassword}
           onChange={handleChange}
-          className="w-full border rounded p-2"
+          className="w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
           required
         />
 
@@ -76,7 +76,7 @@ const ChangePassword = () => {
           placeholder="New Password"
           value={form.newPassword}
           onChange={handleChange}
-          className="w-full border rounded p-2"
+          className="w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
           required
         />
 
@@ -86,14 +86,14 @@ const ChangePassword = () => {
           placeholder="Confirm Password"
           value={form.confirmPassword}
           onChange={handleChange}
-          className="w-full border rounded p-2"
+          className="w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
           required
         />
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded"
+          className="rounded-lg bg-orange-600 px-5 py-2 text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading
             ? "Updating..."

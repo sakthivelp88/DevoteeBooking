@@ -29,11 +29,13 @@ import Feedback from "@/pages/user/dropdownMenu/Feedback";
 
 // User Settings Routes
 import Settings from "@/pages/user/dropdownMenu/settings/Settings";
-import Notifications from "@/pages/user/dropdownMenu/settings/Notifications";
-import Appearance from "@/pages/user/dropdownMenu/settings/Appearance";
-import ReminderSettings from "@/pages/user/dropdownMenu/settings/ReminderSettings";
-import About from "@/pages/user/dropdownMenu/settings/About";
 
+import Appearance from "@/pages/user/dropdownMenu/settings/appearance/Appearance";
+import ReminderSettings from "@/pages/user/dropdownMenu/settings/reminder/ReminderSettings";
+import About from "@/pages/user/dropdownMenu/settings/about/About";
+
+// Under Notification
+import Notifications from "@/pages/user/dropdownMenu/settings/notifications/Notifications";
 import MessageCenter from "@/pages/user/dropdownMenu/settings/notifications/MessageCenter";
 import MessageDetails from "@/pages/user/dropdownMenu/settings/notifications/MessageDetails";
 

@@ -14,16 +14,16 @@ export default function AppearanceSettings() {
       <div className="flex items-center gap-4">
         <button
           onClick={() => navigate("/admin/settings")}
-          className="rounded-lg border p-2 hover:bg-gray-100"
+          className="rounded-lg border p-2 hover:bg-gray-100 dark:text-white dark:bg-black dark:hover:bg-red-900"
         >
           <FiArrowLeft size={20} />
         </button>
 
         <div>
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-white">
             Appearance
           </h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-gray-500 mt-1 dark:text-white">
             Customize the appearance of the admin dashboard.
           </p>
         </div>

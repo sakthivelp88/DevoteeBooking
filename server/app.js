@@ -18,6 +18,7 @@ import darshanTypeRoutes from "./routes/user/darshanTypeRoutes.js";
 // User DropdownMenu Routes
 import feedbackRoutes from "./routes/user/feedbackRoutes.js";
 import notificationRoutes from "./routes/user/notificationRoutes.js";
+import appearanceRoutes from "./routes/user/appearanceRoutes.js";
 
 // Admin Routes
 import adminRoutes from "./routes/admin/adminRoutes.js";
@@ -81,6 +82,7 @@ app.use("/api/temples", templeRoutes);
 app.use("/api/darshan-types", darshanTypeRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api/user/settings", appearanceRoutes);
 
 // Image Uploads Middleware
 app.use("/uploads", express.static("uploads"));

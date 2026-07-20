@@ -7,7 +7,7 @@ export const login = async (req, res) => {
         { email: emailOrPhone },
         { phone: emailOrPhone }
       ]
-    });    
+    });
 
     if (!user) {
       return res.status(400).json({
@@ -34,6 +34,9 @@ export const login = async (req, res) => {
       role: user.role,
       profileImage: user.profileImage,
     };
+
+    console.log("Login Session ID:", req.sessionID);
+    console.log("LOGIN Session:", req.session);
 
     res.json({
       success: true,

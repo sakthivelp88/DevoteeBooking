@@ -40,7 +40,7 @@ const EditProfile = () => {
 
       setPreview(
         user.profileImage
-          ? `http://localhost:5000${user.profileImage}`
+          ? user.profileImage
           : ""
       );
 
@@ -88,15 +88,15 @@ const EditProfile = () => {
   };
 
   if (loading) {
-    return <div className="text-center mt-10">Loading...</div>;
+    return <div className="mt-10 text-center text-slate-600 dark:text-slate-300">Loading...</div>;
   }
 
   return (
-    <div className="max-w-2xl mx-auto bg-white shadow rounded-lg p-6 mt-10">
-      <h2 className="text-2xl font-bold mb-6">
+    <div className="mx-auto mt-10 max-w-2xl rounded-xl border border-slate-200 bg-white p-6 shadow dark:border-slate-700 dark:bg-slate-800">
+      <h2 className="mb-6 text-2xl font-bold text-slate-800 dark:text-slate-100">
         Edit Profile
       </h2>
-      <div className="flex flex-col items-center mb-6">
+      <div className="mb-6 flex flex-col items-center">
 
         <img
           src={
@@ -112,7 +112,7 @@ const EditProfile = () => {
           }
         />
 
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="mt-2 text-sm text-gray-500 dark:text-slate-400">
           Click the photo to change it
         </p>
 
@@ -143,7 +143,7 @@ const EditProfile = () => {
             type="text"
             name="name"
             value={formData.name}
-            className="w-full border rounded p-2 bg-gray-100 cursor-not-allowed"
+            className="w-full cursor-not-allowed rounded-lg border border-slate-300 bg-gray-100 p-2 text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
             readOnly
           />
         </div>
@@ -156,7 +156,7 @@ const EditProfile = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
             required
           />
         </div>
@@ -167,7 +167,7 @@ const EditProfile = () => {
           <input
             type="text"
             value={formData.gender}
-            className="w-full border rounded p-2 bg-gray-100 cursor-not-allowed"
+            className="w-full cursor-not-allowed rounded-lg border border-slate-300 bg-gray-100 p-2 text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
             readOnly
           />
         </div>
@@ -178,7 +178,7 @@ const EditProfile = () => {
           <input
             type="date"
             value={formData.dob}
-            className="w-full border rounded p-2 bg-gray-100 cursor-not-allowed"
+            className="w-full cursor-not-allowed rounded-lg border border-slate-300 bg-gray-100 p-2 text-slate-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
             readOnly
           />
         </div>
@@ -191,7 +191,7 @@ const EditProfile = () => {
             rows="4"
             value={formData.address}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
           />
         </div>
 
@@ -200,7 +200,7 @@ const EditProfile = () => {
           <button
             type="submit"
             disabled={saving}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded"
+            className="rounded-lg bg-orange-600 px-5 py-2 text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {saving ? "Saving..." : "Update Profile"}
           </button>
@@ -208,7 +208,7 @@ const EditProfile = () => {
           <button
             type="button"
             onClick={() => navigate("/profile")}
-            className="border px-5 py-2 rounded"
+            className="rounded-lg border border-slate-300 px-5 py-2 text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             Cancel
           </button>

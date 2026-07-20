@@ -54,11 +54,11 @@ export default function AdminBookings() {
 
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-3xl font-bold dark:text-white">
           Booking Management
         </h1>
 
-        <p className="text-gray-500">
+        <p className="text-gray-500 dark:text-white">
           Manage devotee bookings
         </p>
       </div>
@@ -74,7 +74,7 @@ export default function AdminBookings() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="border rounded-lg px-4 py-2"
+          className="border rounded-lg px-4 py-2 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
         />
 
         <select
@@ -83,9 +83,10 @@ export default function AdminBookings() {
             setBookingStatus(e.target.value);
             setPage(1);
           }}
-          className="border rounded-lg px-4 py-2"
+          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900
+             dark:border-slate-600 dark:bg-slate-800 dark:text-white"
         >
-          <option value="">All Booking Status</option>
+          <option value="" >All Booking Status</option>
           <option value="Pending">Pending</option>
           <option value="Confirmed">Confirmed</option>
           <option value="Completed">Completed</option>
@@ -98,7 +99,8 @@ export default function AdminBookings() {
             setPaymentStatus(e.target.value);
             setPage(1);
           }}
-          className="border rounded-lg px-4 py-2"
+          className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900
+             dark:border-slate-600 dark:bg-slate-800 dark:text-white"
         >
           <option value="">All Payment Status</option>
           <option value="Pending">Pending</option>

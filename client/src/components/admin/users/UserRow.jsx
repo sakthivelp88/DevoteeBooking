@@ -25,7 +25,7 @@ const UserRow = ({
 
           {user.profileImage ? (
             <img
-              src={`http://localhost:5000${user.profileImage}`}
+              src={user.profileImage || "https://ui-avatars.com/api/?name=" + encodeURIComponent(user?.name || "User") + "&background=f97316&color=fff&size=150"}
               alt={user.name}
               className="h-10 w-10 rounded-full object-cover"
             />

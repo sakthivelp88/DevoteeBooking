@@ -55,70 +55,44 @@ function Tickets() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-
-      {/* Header */}
-      <header className="bg-orange-600 text-white p-4 shadow">
-        <h1 className="text-3xl font-bold text-center">
-          Dharsan Ticket Booking
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-slate-50 px-4 py-6 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+      <header className="rounded-[24px] border border-orange-200 bg-orange-600 px-6 py-5 text-white shadow-lg dark:border-orange-900 dark:bg-slate-900">
+        <h1 className="text-center text-3xl font-bold">
+          Darshan Ticket Booking
         </h1>
       </header>
 
-      {/* Hero */}
-      <section className="py-10 text-center">
-        <h2 className="text-4xl font-bold">
+      <section className="mx-auto max-w-7xl py-10 text-center">
+        <h2 className="text-4xl font-bold text-slate-900 dark:text-white">
           Book Darshan Tickets Online
         </h2>
 
-        <p className="mt-2 text-gray-600">
-          Fast, Secure & Convenient
+        <p className="mt-2 text-lg text-slate-600 dark:text-slate-300">
+          Fast, secure, and convenient
         </p>
       </section>
 
-      {/* Tickets */}
-      <section className="max-w-7xl mx-auto px-4">
-
-        <div className="grid md:grid-cols-3 gap-6">
-
+      <section className="mx-auto max-w-7xl px-2">
+        <div className="grid gap-6 md:grid-cols-3">
           {tickets.map((ticket) => (
             <div
               key={ticket._id}
-              className="bg-white rounded-xl shadow-lg p-5"
+              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-lg transition hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
             >
-              <h3 className="text-xl font-bold">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 {ticket.title}
               </h3>
-              <p>
-                Temple: {ticket.temple?.name}
-              </p>
+              <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <p><span className="font-semibold text-slate-700 dark:text-slate-200">Temple:</span> {ticket.temple?.name}</p>
+                <p><span className="font-semibold text-slate-700 dark:text-slate-200">Darshan Type:</span> {ticket.darshanType?.name}</p>
+                <p><span className="font-semibold text-slate-700 dark:text-slate-200">Date:</span> {new Date(ticket.date).toLocaleDateString()}</p>
+                <p><span className="font-semibold text-slate-700 dark:text-slate-200">Slot:</span> {ticket.slot}</p>
+                <p className="font-semibold text-green-600 dark:text-green-400">Ticket Fee: ₹{ticket.price}</p>
+                <p><span className="font-semibold text-slate-700 dark:text-slate-200">Available Seats:</span> {ticket.availableSeats}</p>
+              </div>
 
-              <p>
-                Darshan Type: {ticket.darshanType?.name}
-              </p>
-
-              <p className="mt-2">
-                Date:
-                {" "}
-                {new Date(ticket.date).toLocaleDateString()}
-              </p>
-
-              <p>
-                Slot:
-                {" "}
-                {ticket.slot}
-              </p>
-
-              <p className="text-green-600 font-bold mt-2">
-                Ticket Fee: ₹{ticket.price}
-              </p>
-
-              <p>
-                Available Seats:
-                {" "}
-                {ticket.availableSeats}
-              </p>
-              <div className="mt-3">
-                <label className="block mb-1 font-medium">
+              <div className="mt-4">
+                <label className="mb-1 block font-medium text-slate-700 dark:text-slate-200">
                   Quantity:
                 </label>
 
@@ -133,20 +107,18 @@ function Tickets() {
                       [ticket._id]: Number(e.target.value),
                     })
                   }
-                  className="w-40 border rounded-lg p-2"
+                  className="w-40 rounded-lg border border-slate-300 bg-white p-2 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                 />
               </div>
               <button
                 onClick={() => handleBooking(ticket)}
-                className="mt-4 w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700"
+                className="mt-4 w-full rounded-lg bg-orange-600 py-2.5 font-semibold text-white transition hover:bg-orange-700"
               >
                 Continue
               </button>
             </div>
           ))}
-
         </div>
-
       </section>
     </div>
   );

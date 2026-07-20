@@ -159,19 +159,19 @@ const NotificationForm = () => {
 
         <button
           onClick={() => navigate(-1)}
-          className="rounded-lg border p-2 hover:bg-gray-100"
+          className="rounded-lg border p-2 hover:bg-gray-100 dark:text-white dark:bg-black dark:hover:bg-red-900"
         >
           <FiArrowLeft size={20} />
         </button>
 
         <div>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold dark:text-white">
             {id
               ? "Edit Notification"
               : "Create Notification"}
           </h1>
 
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-white">
             Create or update notification details.
           </p>
         </div>

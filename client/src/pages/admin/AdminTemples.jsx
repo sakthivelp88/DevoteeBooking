@@ -99,11 +99,11 @@ export default function AdminTemples() {
 
         <div>
 
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold dark:text-white">
             Temple Management
           </h1>
 
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-white">
             Manage temples
           </p>
 
@@ -128,10 +128,11 @@ export default function AdminTemples() {
             setSearchTerm(e.target.value);
             setCurrentPage(1);
           }}
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 
+          focus:ring-orange-500 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
         />
 
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-sm text-gray-500 mt-2 dark:text-white">
           Showing {filteredTemples.length} of {temples.length} temples
         </p>
       </div>

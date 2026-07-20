@@ -31,14 +31,14 @@ export default function Dashboard() {
   const { stats, nextBooking, recentBookings } = dashboard;
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-8">
+    <div className="mx-auto max-w-7xl space-y-8 p-6 text-slate-900 dark:text-slate-100">
 
       <div>
         <h1 className="text-3xl font-bold">
           Dashboard
         </h1>
 
-        <p className="text-gray-500 mt-2">
+        <p className="mt-2 text-gray-500 dark:text-slate-400">
           Track your temple bookings and payments.
         </p>
       </div>
@@ -59,9 +59,9 @@ export default function Dashboard() {
       </div>
 
       {nextBooking && (
-        <div className="bg-white rounded-xl shadow p-6">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow dark:border-slate-700 dark:bg-slate-800">
 
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="mb-4 text-xl font-semibold">
             Upcoming Darshan
           </h2>
 
@@ -97,9 +97,9 @@ export default function Dashboard() {
         </div>
       )}
 
-      <div className="bg-white rounded-xl shadow">
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow dark:border-slate-700 dark:bg-slate-800">
 
-        <div className="p-5 border-b">
+        <div className="border-b border-slate-200 p-5 dark:border-slate-700">
           <h2 className="text-xl font-semibold">
             Recent Bookings
           </h2>
@@ -107,7 +107,7 @@ export default function Dashboard() {
 
         <table className="w-full">
 
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 dark:bg-slate-700">
 
             <tr>
 
@@ -140,7 +140,7 @@ export default function Dashboard() {
             {recentBookings.map((booking) => (
               <tr
                 key={booking._id}
-                className="border-t"
+                className="border-t border-slate-200 dark:border-slate-700"
               >
                 <td className="p-4">
                   {booking.temple.name}
@@ -183,13 +183,13 @@ export default function Dashboard() {
 
 function Card({ title, value }) {
   return (
-    <div className="bg-white shadow rounded-xl p-6">
+    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow dark:border-slate-700 dark:bg-slate-800">
 
-      <p className="text-gray-500">
+      <p className="text-gray-500 dark:text-slate-400">
         {title}
       </p>
 
-      <h2 className="text-3xl font-bold mt-2">
+      <h2 className="mt-2 text-3xl font-bold">
         {value}
       </h2>
 

@@ -108,13 +108,13 @@ export default function AdminTickets() {
 
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-3xl font-bold dark:text-white">
           Ticket Management
         </h1>
 
         <button
           onClick={() => navigate("/admin/ticket-slots/create")}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg dark:text-white"
         >
           + Create Ticket
         </button>
@@ -126,7 +126,7 @@ export default function AdminTickets() {
           placeholder="Search tickets..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-          className="w-80 rounded-lg border border-gray-300 px-4 py-2"
+          className="w-80 rounded-lg border border-gray-300 px-4 py-2 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
         />
 
       </div>
