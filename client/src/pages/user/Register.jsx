@@ -92,14 +92,20 @@ export default function Register() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-                <h2 className="text-3xl font-bold text-center mb-6">
-                    Register
-                </h2>
+        <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-orange-50 via-white to-slate-100 px-4 py-10 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+            <div className="w-full max-w-lg rounded-[24px] border border-slate-200 bg-white/90 p-8 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-800/90">
+                <div className="mb-6 text-center">
+                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+                        Create Account
+                    </h2>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                        Register to book your temple visits effortlessly
+                    </p>
+                </div>
 
                 <form onSubmit={submitHandler} className="space-y-4">
-                    <input className="w-full border border-gray-300 rounded-lg p-3"
+                    <input
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         autoFocus
                         type="text"
                         placeholder="Name"
@@ -112,7 +118,8 @@ export default function Register() {
                         }
                     />
 
-                    <input className="w-full border border-gray-300 rounded-lg p-3"
+                    <input
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         type="email"
                         placeholder="Email"
                         value={form.email}
@@ -125,7 +132,7 @@ export default function Register() {
                     />
 
                     <input
-                        className="w-full border border-gray-300 rounded-lg p-3"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         type="tel"
                         placeholder="Phone Number"
                         maxLength={10}
@@ -138,7 +145,7 @@ export default function Register() {
                         }
                     />
                     <select
-                        className="w-full border border-gray-300 rounded-lg p-3"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         value={form.gender}
                         onChange={(e) =>
                             setForm({
@@ -154,7 +161,7 @@ export default function Register() {
                     </select>
 
                     <input
-                        className="w-full border border-gray-300 rounded-lg p-3"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         type="date"
                         value={form.dob}
                         onChange={(e) =>
@@ -165,7 +172,7 @@ export default function Register() {
                         }
                     />
                     <textarea
-                        className="w-full border border-gray-300 rounded-lg p-3"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         rows="3"
                         placeholder="Address"
                         value={form.address}
@@ -177,7 +184,8 @@ export default function Register() {
                         }
                     />
 
-                    <input className="w-full border border-gray-300 rounded-lg p-3"
+                    <input
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         type="password"
                         placeholder="Password"
                         value={form.password}
@@ -189,15 +197,15 @@ export default function Register() {
                         }
                     />
 
-                    <input className="w-full border border-gray-300 rounded-lg p-3"
+                    <input
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                         type="password"
                         placeholder="Confirm Password"
                         value={form.confirmPassword}
                         onChange={(e) =>
                             setForm({
                                 ...form,
-                                confirmPassword:
-                                    e.target.value,
+                                confirmPassword: e.target.value,
                             })
                         }
                     />
@@ -205,16 +213,17 @@ export default function Register() {
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full bg-blue-600 text-white py-3 rounded-lg disabled:bg-gray-400"
+                        className="w-full rounded-xl bg-orange-600 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-slate-400"
                     >
                         {submitting ? "Registering..." : "Register"}
                     </button>
                 </form>
-                <p className="text-center mt-6 text-gray-600">
-                    Already have an account?{" "}
+                <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
+                    Already have an account? {" "}
                     <button
+                        type="button"
                         onClick={() => navigate("/login")}
-                        className="text-blue-600 hover:underline"
+                        className="font-semibold text-orange-600 transition hover:underline dark:text-orange-400"
                     >
                         Login
                     </button>

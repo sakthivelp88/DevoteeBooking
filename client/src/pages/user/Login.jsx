@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { user, login } = useAuth(); 
+  const { user, login } = useAuth();
 
   const [form, setForm] = useState({
     emailOrPhone: "",
@@ -28,10 +28,7 @@ export default function Login() {
     }
 
     try {
-      const response = await login(
-        form.emailOrPhone,
-        form.password
-      );   
+      const response = await login(form.emailOrPhone, form.password);
 
       if (response.user.role === "admin") {
         navigate("/admin");
@@ -43,22 +40,26 @@ export default function Login() {
 
       alert(
         error.response?.data?.message ||
-        "Invalid email/phone or password"
+          "Invalid email/phone or password"
       );
     }
   };
-  
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center mb-6">
-          Login
-        </h2>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-orange-50 via-white to-slate-100 px-4 py-10 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+      <div className="w-full max-w-md rounded-[24px] border border-slate-200 bg-white/90 p-8 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-800/90">
+        <div className="mb-6 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+            Welcome Back
+          </h2>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            Sign in to continue your darshan booking journey
+          </p>
+        </div>
 
         <form onSubmit={submitHandler} className="space-y-4">
           <input
-            className="w-full border border-gray-300 rounded-lg p-3"
+            className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
             autoFocus
             type="text"
             placeholder="Email or Phone"
@@ -72,7 +73,7 @@ export default function Login() {
           />
 
           <input
-            className="w-full border border-gray-300 rounded-lg p-3"
+            className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
             type="password"
             placeholder="Password"
             value={form.password}
@@ -86,17 +87,18 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+            className="w-full rounded-xl bg-orange-600 px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-orange-700"
           >
             Login
           </button>
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
-          Don't have an account?{" "}
+        <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
+          Don't have an account? {" "}
           <button
+            type="button"
             onClick={() => navigate("/register")}
-            className="text-blue-600 hover:underline font-medium"
+            className="font-semibold text-orange-600 transition hover:underline dark:text-orange-400"
           >
             Register
           </button>
