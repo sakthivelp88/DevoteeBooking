@@ -33,11 +33,11 @@ const AdminReportsAnalytics = () => {
     <div className="space-y-6 p-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-800">
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
           Reports & Analytics
         </h1>
 
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 text-sm text-gray-500 dark:text-white">
           View revenue, bookings, payments, and analytics reports.
         </p>
       </div>

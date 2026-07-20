@@ -33,12 +33,12 @@ const Profile = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white shadow rounded-lg p-6">
-      <div className="flex flex-col items-center mb-6">
+    <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-slate-200 bg-white p-6 shadow dark:border-slate-700 dark:bg-slate-800">
+      <div className="mb-6 flex flex-col items-center">
         <img
           src={
             user.profileImage
-              ? `http://localhost:5000${user.profileImage}`
+              ? `${user.profileImage.startsWith("http") ? user.profileImage : user.profileImage}`
               : "https://ui-avatars.com/api/?name=" +
               encodeURIComponent(user.name) +
               "&background=f97316&color=fff&size=150"
@@ -48,35 +48,35 @@ const Profile = () => {
         />
       </div>
       
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="mb-6 text-2xl font-bold text-slate-800 dark:text-slate-100">
         My Profile
       </h2>
 
       <div className="space-y-4">
 
         <div>
-          <p className="text-gray-500">Name</p>
-          <p>{user.name}</p>
+          <p className="text-gray-500 dark:text-slate-400">Name</p>
+          <p className="text-slate-700 dark:text-slate-200">{user.name}</p>
         </div>
 
         <div>
-          <p className="text-gray-500">Email</p>
-          <p>{user.email}</p>
+          <p className="text-gray-500 dark:text-slate-400">Email</p>
+          <p className="text-slate-700 dark:text-slate-200">{user.email}</p>
         </div>
 
         <div>
-          <p className="text-gray-500">Phone</p>
-          <p>{user.phone}</p>
+          <p className="text-gray-500 dark:text-slate-400">Phone</p>
+          <p className="text-slate-700 dark:text-slate-200">{user.phone}</p>
         </div>
 
         <div>
-          <p className="text-gray-500">Gender</p>
-          <p>{user.gender || "Not Added"}</p>
+          <p className="text-gray-500 dark:text-slate-400">Gender</p>
+          <p className="text-slate-700 dark:text-slate-200">{user.gender || "Not Added"}</p>
         </div>
 
         <div>
-          <p className="text-gray-500">Date of Birth</p>
-          <p>
+          <p className="text-gray-500 dark:text-slate-400">Date of Birth</p>
+          <p className="text-slate-700 dark:text-slate-200">
             {user.dob
               ? new Date(user.dob).toLocaleDateString()
               : "Not Added"}
@@ -84,20 +84,20 @@ const Profile = () => {
         </div>
 
         <div>
-          <p className="text-gray-500">Address</p>
-          <p>{user.address || "Not Added"}</p>
+          <p className="text-gray-500 dark:text-slate-400">Address</p>
+          <p className="text-slate-700 dark:text-slate-200">{user.address || "Not Added"}</p>
         </div>
 
         <div>
-          <p className="text-gray-500">Member Since</p>
-          <p>{new Date(user.createdAt).toLocaleDateString()}</p>
+          <p className="text-gray-500 dark:text-slate-400">Member Since</p>
+          <p className="text-slate-700 dark:text-slate-200">{new Date(user.createdAt).toLocaleDateString()}</p>
         </div>
 
       </div>
 
       <button
         onClick={() => navigate("/profile/edit")}
-        className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded"
+        className="mt-8 rounded-lg bg-orange-600 px-5 py-2 text-white transition hover:bg-orange-700"
       >
         Edit Profile
       </button>

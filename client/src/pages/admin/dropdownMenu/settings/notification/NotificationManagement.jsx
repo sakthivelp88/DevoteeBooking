@@ -166,10 +166,10 @@ const AdminNotifications = () => {
                     </button>
 
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                             Notification Management
                         </h1>
-                        <p className="mt-1 text-sm text-gray-500">
+                        <p className="mt-1 text-sm text-gray-500 dark:text-white">
                             Manage all notifications.
                         </p>
                     </div>
@@ -232,14 +232,15 @@ const AdminNotifications = () => {
 
             <div className="relative">
 
-                <FiSearch className="absolute left-4 top-3 text-gray-400" />
+                <FiSearch className="absolute left-4 top-3 text-gray-400 dark:text-white" />
 
                 <input
                     type="text"
                     placeholder="Search notifications..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full rounded-xl border pl-11 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    className="w-full rounded-xl border pl-11 pr-4 py-3 focus:outline-none 
+                    focus:ring-2 focus:ring-orange-400 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
                 />
 
             </div>
@@ -251,7 +252,7 @@ const AdminNotifications = () => {
                 <select
                     value={typeFilter}
                     onChange={(e) => setTypeFilter(e.target.value)}
-                    className="rounded-xl border p-3"
+                    className="rounded-xl border p-3 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
                 >
                     {TYPE_OPTIONS.map(type => (
                         <option key={type} value={type}>
@@ -269,7 +270,7 @@ const AdminNotifications = () => {
                     onChange={(e) =>
                         setStatusFilter(e.target.value)
                     }
-                    className="rounded-xl border p-3"
+                    className="rounded-xl border p-3 dark:bg-slate-800 dark:border-slate-600 dark:text-white"
                 >
 
                     {STATUS_OPTIONS.map(status => (

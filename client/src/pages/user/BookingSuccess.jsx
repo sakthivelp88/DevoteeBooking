@@ -46,62 +46,59 @@ function BookingSuccess() {
     }
 
     return (
-        <div className="max-w-4xl mx-auto px-6 py-10">
-            <div className="bg-white shadow-lg rounded-xl p-8">
-
+        <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-slate-50 px-4 py-10 text-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
+            <div className="mx-auto max-w-4xl rounded-[24px] border border-slate-200 bg-white/90 p-8 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-800/90">
                 <div className="text-center">
-                    <div className="text-6xl mb-4">✅</div>
+                    <div className="mb-4 text-6xl">✅</div>
 
                     <h1 className="text-3xl font-bold text-green-600">
                         Booking Confirmed
                     </h1>
 
-                    <p className="text-gray-600 mt-2">
+                    <p className="mt-2 text-slate-600 dark:text-slate-400">
                         Your temple ticket has been booked successfully.
                     </p>
                 </div>
 
-                <hr className="my-8" />
+                <hr className="my-8 border-slate-200 dark:border-slate-700" />
 
-                <div className="grid md:grid-cols-2 gap-6">
-
+                <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                        <h3 className="font-semibold mb-3">
+                        <h3 className="mb-3 font-semibold text-slate-900 dark:text-white">
                             Booking Details
                         </h3>
 
-                        <p><strong>Booking ID:</strong><br />{booking._id}</p>
+                        <p className="text-slate-700 dark:text-slate-200"><strong>Booking ID:</strong><br />{booking._id}</p>
 
-                        <p className="mt-3">
+                        <p className="mt-3 text-slate-700 dark:text-slate-200">
                             <strong>Quantity:</strong> {booking.quantity}
                         </p>
 
-                        <p className="mt-3">
+                        <p className="mt-3 text-slate-700 dark:text-slate-200">
                             <strong>Total Amount:</strong> ₹{booking.totalAmount}
                         </p>
 
-                        <p className="mt-3">
+                        <p className="mt-3 text-slate-700 dark:text-slate-200">
                             <strong>Status:</strong>{" "}
-                            <span className="text-green-600 font-semibold">
+                            <span className="font-semibold text-green-600">
                                 {booking.bookingStatus}
                             </span>
                         </p>
                     </div>
 
                     <div>
-                        <h3 className="font-semibold mb-3">
+                        <h3 className="mb-3 font-semibold text-slate-900 dark:text-white">
                             Contact
                         </h3>
 
-                        <p>{booking.contact?.mobile}</p>
-                        <p>{booking.contact?.email}</p>
-                        <p>{booking.contact?.address}</p>
+                        <p className="text-slate-700 dark:text-slate-200">{booking.contact?.mobile}</p>
+                        <p className="text-slate-700 dark:text-slate-200">{booking.contact?.email}</p>
+                        <p className="text-slate-700 dark:text-slate-200">{booking.contact?.address}</p>
                     </div>
-
                 </div>
 
                 <div className="mt-8 text-center">
-                    <h3 className="text-xl font-semibold mb-4">
+                    <h3 className="mb-4 text-xl font-semibold text-slate-900 dark:text-white">
                         Entry QR Code
                     </h3>
 
@@ -109,22 +106,22 @@ function BookingSuccess() {
                         <img
                             src={booking.qrCode}
                             alt="Booking QR"
-                            className="mx-auto w-56 h-56 border rounded-lg shadow"
+                            className="mx-auto h-56 w-56 rounded-lg border border-slate-200 shadow dark:border-slate-700"
                         />
                     ) : (
-                        <p className="text-gray-500">
+                        <p className="text-slate-500 dark:text-slate-400">
                             QR Code not available.
                         </p>
                     )}
 
-                    <p className="text-sm text-gray-500 mt-3">
+                    <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
                         Please present this QR code at the temple entrance for verification.
                     </p>
                 </div>
 
-                <hr className="my-8" />
+                <hr className="my-8 border-slate-200 dark:border-slate-700" />
 
-                <h3 className="font-semibold mb-4">
+                <h3 className="mb-4 font-semibold text-slate-900 dark:text-white">
                     Devotees
                 </h3>
 
@@ -132,7 +129,7 @@ function BookingSuccess() {
                     {booking.devotees?.map((devotee, index) => (
                         <div
                             key={index}
-                            className="border rounded-lg p-4"
+                            className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"
                         >
                             <p><strong>Name:</strong> {devotee.name}</p>
                             <p><strong>Age:</strong> {devotee.age}</p>
@@ -141,10 +138,10 @@ function BookingSuccess() {
                     ))}
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4 mt-10">
+                <div className="mt-10 flex flex-wrap justify-center gap-4">
                     <button
                         onClick={() => navigate("/my-bookings")}
-                        className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700"
+                        className="rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition hover:bg-orange-700"
                     >
                         My Bookings
                     </button>
@@ -156,19 +153,18 @@ function BookingSuccess() {
                                 "_blank"
                             )
                         }
-                        className="bg-blue-600 text-white px-6 py-3 rounded-lg"
+                        className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
                     >
                         Download PDF
                     </button>
 
                     <button
-                        className="bg-green-600 text-white px-6 py-3 rounded-lg opacity-50 cursor-not-allowed"
+                        className="cursor-not-allowed rounded-lg bg-green-600 px-6 py-3 font-semibold text-white opacity-50"
                         disabled
                     >
                         Email Ticket
                     </button>
                 </div>
-
             </div>
         </div>
     );

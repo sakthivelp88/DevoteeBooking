@@ -1,15 +1,26 @@
 import { createContext, useContext, useEffect, useState, } from "react";
 
-import { getTheme, updateTheme, } from "@/services/admin/adminThemeService";
+import { getTheme, updateTheme, } from "@/services/user/appearanceService";
 
 const ThemeContext = createContext();
 
-export const useTheme = () => useContext(ThemeContext);
+// export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+    const context = useContext(ThemeContext);
 
-export const ThemeProvider = ({ children }) => {
+    console.log("Theme Context:", context);
+
+    if (!context) {
+        throw new Error("useTheme must be used inside UserThemeProvider");
+    }
+
+    return context;
+};
+
+export const UserThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         if (typeof window === "undefined") return "light";
-        return localStorage.getItem("admin-theme") || "light";
+        return localStorage.getItem("app-theme") || "light";
     });
     const [loading, setLoading] = useState(true);
 
@@ -35,19 +46,19 @@ export const ThemeProvider = ({ children }) => {
         }
 
         if (typeof window !== "undefined") {
-            localStorage.setItem("admin-theme", mode);
+            localStorage.setItem("app-theme", mode);
         }
     };
 
     const loadTheme = async () => {
         try {
             const res = await getTheme();
-            const savedTheme = res?.data?.theme || localStorage.getItem("admin-theme") || "light";
+            const savedTheme = res?.data?.theme || localStorage.getItem("app-theme") || "light";
             setTheme(savedTheme);
             applyTheme(savedTheme);
         } catch (err) {
             console.log(err);
-            const savedTheme = localStorage.getItem("admin-theme") || "light";
+            const savedTheme = localStorage.getItem("app-theme") || "light";
             setTheme(savedTheme);
             applyTheme(savedTheme);
         } finally {

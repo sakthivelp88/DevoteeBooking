@@ -186,11 +186,11 @@ export default function Profile() {
 
             {/* Header */}
             <div>
-                <h1 className="text-3xl font-bold text-gray-800">
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
                     My Profile
                 </h1>
 
-                <p className="mt-1 text-gray-500">
+                <p className="mt-1 text-gray-500 dark:text-white">
                     Manage your personal account information.
                 </p>
             </div>
@@ -212,7 +212,7 @@ export default function Profile() {
                                         src={
                                             preview.startsWith("blob:")
                                                 ? preview
-                                                : `http://localhost:5000${preview}`
+                                                : preview
                                         }
                                         alt="Profile"
                                         className="h-full w-full object-cover"
@@ -255,7 +255,7 @@ export default function Profile() {
 
                             {user?.profileImage ? (
                                 <img
-                                    src={`http://localhost:5000${user.profileImage}`}
+                                    src={user.profileImage ? user.profileImage : "https://ui-avatars.com/api/?name=" + encodeURIComponent(user?.name || "User") + "&background=f97316&color=fff&size=150"}
                                     alt={user.name}
                                     className="h-10 w-10 rounded-full object-cover"
                                 />

@@ -50,12 +50,12 @@ export default function Feedback() {
     };
 
     return (
-        <div className="max-w-3xl mx-auto mt-10 bg-white shadow rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-6">Feedback</h2>
+        <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-slate-200 bg-white p-6 shadow dark:border-slate-700 dark:bg-slate-800">
+            <h2 className="mb-6 text-2xl font-bold text-slate-800 dark:text-slate-100">Feedback</h2>
 
             <form onSubmit={handleSubmit}>
                 <div className="mb-6">
-                    <label className="block mb-2 font-medium">
+                    <label className="mb-2 block font-medium text-slate-700 dark:text-slate-200">
                         Rate your experience
                     </label>
 
@@ -72,15 +72,15 @@ export default function Feedback() {
                             />
                         ))}
                     </div>
-                    <p className="mt-2 text-sm text-gray-600">
+                    <p className="mt-2 text-sm text-gray-600 dark:text-slate-400">
                         You rated: <span className="font-semibold">{rating}/5</span>
                     </p>
-                    <p className="mt-2 text-orange-600 font-medium">
+                    <p className="mt-2 font-medium text-orange-600">
                         {ratingLabels[rating]}
                     </p>
                 </div>
                 <div>
-                    <label className="block mb-2 font-medium">
+                    <label className="mb-2 block font-medium text-slate-700 dark:text-slate-200">
                         Feedback
                     </label>
 
@@ -89,13 +89,13 @@ export default function Feedback() {
                         value={feedback}
                         onChange={(e) => setFeedback(e.target.value)}
                         placeholder="Share your experience..."
-                        className="w-full border rounded-lg p-3"
+                        className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-200 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-orange-500 dark:focus:ring-orange-900"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded"
+                    className="mt-4 rounded-lg bg-orange-600 px-5 py-2 text-white transition hover:bg-orange-700"
                 >
                     Submit Feedback
                 </button>

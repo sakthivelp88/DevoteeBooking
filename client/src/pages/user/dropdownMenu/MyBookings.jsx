@@ -72,13 +72,13 @@ export default function MyBookings() {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h2 className="text-3xl font-bold text-center text-orange-600 mb-8">
+    <div className="min-h-screen bg-slate-50 p-6 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+      <h2 className="mb-8 text-center text-3xl font-bold text-orange-600">
         My Bookings
       </h2>
 
       {bookings.length === 0 ? (
-        <p className="text-center text-gray-500">
+        <p className="text-center text-gray-500 dark:text-slate-400">
           No bookings found.
         </p>
       ) : (
@@ -86,7 +86,7 @@ export default function MyBookings() {
           {bookings.map((booking) => (
             <div
               key={booking._id}
-              className="bg-white rounded-xl shadow-lg p-6"
+              className="rounded-xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-700 dark:bg-slate-800"
             >
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Left */}
@@ -95,7 +95,7 @@ export default function MyBookings() {
                     {booking.temple?.name}
                   </h3>
 
-                  <p className="text-gray-600 mt-1">
+                  <p className="mt-1 text-gray-600 dark:text-slate-400">
                     {booking.darshanType?.name}
                   </p>
 
@@ -153,7 +153,7 @@ export default function MyBookings() {
                       className="w-40 h-40 border rounded-lg"
                     />
                   ) : (
-                    <div className="w-40 h-40 border rounded-lg flex items-center justify-center text-gray-400">
+                    <div className="flex h-40 w-40 items-center justify-center rounded-lg border border-slate-300 text-gray-400 dark:border-slate-600 dark:text-slate-500">
                       No QR
                     </div>
                   )}
@@ -163,7 +163,7 @@ export default function MyBookings() {
                       onClick={() =>
                         navigate(`/booking-success/${booking._id}`)
                       }
-                      className="bg-orange-600 text-white px-4 py-2 rounded-lg"
+                      className="rounded-lg bg-orange-600 px-4 py-2 text-white transition hover:bg-orange-700"
                     >
                       View Ticket
                     </button>
@@ -175,9 +175,9 @@ export default function MyBookings() {
                         setOtherReason("");
                         setShowCancelModal(true);
                       }}
-                      className={`px-4 py-2 rounded-lg text-white transition ${booking.bookingStatus === "Cancelled"
-                        ? "bg-gray-400 cursor-not-allowed"
-                        : "bg-red-600 hover:bg-red-700"
+                      className={`rounded-lg px-4 py-2 text-white transition ${booking.bookingStatus === "Cancelled"
+                        ? "cursor-not-allowed bg-gray-400"
+                        : "bg-orange-600 hover:bg-orange-700"
                         }`}
                     >
                       {booking.bookingStatus === "Cancelled"
@@ -192,7 +192,7 @@ export default function MyBookings() {
                           "_blank"
                         )
                       }
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                      className="rounded-lg bg-orange-600 px-4 py-2 text-white transition hover:bg-orange-700"
                     >
                       PDF
                     </button>
@@ -206,13 +206,13 @@ export default function MyBookings() {
       }
       {showCancelModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 overflow-scroll-auto">
+          <div className="w-full max-w-md overflow-scroll-auto rounded-xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-700 dark:bg-slate-800">
 
-            <h2 className="text-xl font-bold text-red-600 mb-4">
+            <h2 className="mb-4 text-xl font-bold text-orange-600">
               Cancel Ticket
             </h2>
 
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4 text-gray-600 dark:text-slate-400">
               Please select a reason for cancellation.
             </p>
 
@@ -220,9 +220,9 @@ export default function MyBookings() {
               {cancellationReasons.map((item) => (
                 <label
                   key={item}
-                  className={`flex items-center gap-3 border rounded-lg p-3 cursor-pointer transition ${reason === item
-                      ? "border-red-600 bg-red-50"
-                      : "border-gray-300 hover:bg-gray-50"
+                  className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition ${reason === item
+                      ? "border-orange-500 bg-orange-50 dark:border-orange-500 dark:bg-orange-950/40"
+                      : "border-gray-300 hover:bg-gray-50 dark:border-slate-600 dark:hover:bg-slate-700"
                     }`}
                 >
                   <input
@@ -255,14 +255,14 @@ export default function MyBookings() {
                   setOtherReason("");
                   setSelectedBookingId(null);
                 }}
-                className="px-4 py-2 border rounded-lg hover:bg-gray-100"
+                className="rounded-lg border border-slate-300 px-4 py-2 transition hover:bg-gray-100 dark:border-slate-600 dark:hover:bg-slate-700"
               >
                 Close
               </button>
 
               <button
                 onClick={handleCancel}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                className="rounded-lg bg-orange-600 px-4 py-2 text-white transition hover:bg-orange-700"
               >
                 Confirm Cancellation
               </button>

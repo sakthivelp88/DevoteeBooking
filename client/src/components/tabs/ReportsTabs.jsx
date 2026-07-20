@@ -27,7 +27,7 @@ const ReportsTabs = ({ activeTab, onChange }) => {
           <button
             key={tab.id}
             onClick={() => onChange(tab.id)}
-            className={`border-b-2 pb-3 text-sm font-semibold transition-all ${activeTab === tab.id
+            className={`border-b-2 pb-3 text-sm font-semibold transition-all dark:text-white ${activeTab === tab.id
                 ? "border-indigo-600 text-indigo-600"
                 : "border-transparent text-gray-500 hover:text-indigo-600"
               }`}

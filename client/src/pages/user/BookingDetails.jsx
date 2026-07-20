@@ -97,26 +97,37 @@ function BookingDetails() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8 space-y-6">
-            <BookingSummary
-                ticket={ticket}
-                quantity={quantity}
-            />
+        <div className="mx-auto max-w-6xl px-4 py-8 text-slate-900 dark:text-slate-100">
+            <div className="mb-6 rounded-[24px] border border-orange-200 bg-orange-600 px-6 py-5 text-white shadow-lg dark:border-orange-900 dark:bg-slate-900">
+                <h1 className="text-3xl font-bold">
+                    Complete your booking
+                </h1>
+                <p className="mt-2 text-orange-50">
+                    Review your details, add traveler information, and pay securely.
+                </p>
+            </div>
 
-            <ContactInformation
-                contact={contact}
-                setContact={setContact}
-            />
+            <div className="space-y-6">
+                <BookingSummary
+                    ticket={ticket}
+                    quantity={quantity}
+                />
 
-            <DevoteeForm
-                devotees={devotees}
-                setDevotees={setDevotees}
-            />
+                <ContactInformation
+                    contact={contact}
+                    setContact={setContact}
+                />
 
-            <PaymentButton
-                onClick={handleContinue}
-                loading={loading}
-            />
+                <DevoteeForm
+                    devotees={devotees}
+                    setDevotees={setDevotees}
+                />
+
+                <PaymentButton
+                    onClick={handleContinue}
+                    loading={loading}
+                />
+            </div>
         </div>
     );
 }

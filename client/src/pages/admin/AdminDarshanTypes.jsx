@@ -73,11 +73,11 @@ export default function AdminDarshanTypes() {
       <div className="flex justify-between items-center">
 
         <div>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold dark:text-white">
             Darshan Types
           </h1>
 
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-white">
             Manage Darshan Types
           </p>
         </div>
