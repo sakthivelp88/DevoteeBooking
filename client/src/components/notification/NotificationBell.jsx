@@ -5,7 +5,7 @@ import {
     getUnreadCount,
     markAsRead,
     markAllAsRead,
-} from "@services/user/notificationService";
+} from "@/features/notifications/services/notificationService";
 import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 

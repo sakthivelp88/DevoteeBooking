@@ -35,9 +35,6 @@ export const login = async (req, res) => {
       profileImage: user.profileImage,
     };
 
-    console.log("Login Session ID:", req.sessionID);
-    console.log("LOGIN Session:", req.session);
-
     res.json({
       success: true,
       user: req.session.user,

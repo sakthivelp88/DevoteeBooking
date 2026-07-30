@@ -6,7 +6,7 @@ import {
     deleteAdminNotification,
     cancelAdminNotification,
     getAdminNotificationStats,
-} from "@services/admin/notificationService";
+} from "@/features/admin/services/adminNotificationService";
 
 import {
     setLoading,

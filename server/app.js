@@ -3,34 +3,33 @@ import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import path from "path";
-import 'module-alias/register';
 
 //User Routes
-import authRoutes from "./routes/user/authRoutes.js";
-import userRoutes from "./routes/user/userRoutes.js";
-import ticketRoutes from "./routes/user/ticketRoutes.js";
-import bookingRoutes from "./routes/user/bookingRoutes.js";
-import paymentRoutes from "./routes/user/paymentRoutes.js";
-import dashboardRoutes from "./routes/user/dashboardRoutes.js";
-import templeRoutes from "./routes/user/templeRoutes.js";
-import darshanTypeRoutes from "./routes/user/darshanTypeRoutes.js";
+import authRoutes from "./src/modules/auth/auth.routes.js";
+import userRoutes from "./src/modules/users/user.routes.js";
+import ticketRoutes from "./src/modules/tickets/ticket.routes.js";
+import bookingRoutes from "./src/modules/bookings/booking.routes.js";
+import paymentRoutes from "./src/modules/payments/payment.routes.js";
+import dashboardRoutes from "./src/modules/dashboard/dashboard.routes.js";
+import templeRoutes from "./src/modules/temples/temple.routes.js";
+import darshanTypeRoutes from "./src/modules/darshan-types/darshan-type.routes.js";
 
 // User DropdownMenu Routes
-import feedbackRoutes from "./routes/user/feedbackRoutes.js";
-import notificationRoutes from "./routes/user/notificationRoutes.js";
-import appearanceRoutes from "./routes/user/appearanceRoutes.js";
+import feedbackRoutes from "./src/modules/feedback/feedback.routes.js";
+import notificationRoutes from "./src/modules/notifications/notification.routes.js";
+import appearanceRoutes from "./src/modules/appearance/appearance.routes.js";
 
 // Admin Routes
-import adminRoutes from "./routes/admin/adminRoutes.js";
-import adminPaymentRoutes from "./routes/admin/adminPaymentRoutes.js";
-import adminReportRoutes from "./routes/admin/adminReportRoutes.js";
-import adminUserRoutes from "./routes/admin/adminUserRoutes.js";
-import adminTicketVerificationRoutes from "./routes/admin/adminTicketVerificationRoutes.js";
+import adminRoutes from "./src/modules/admin/admin.routes.js";
+import adminPaymentRoutes from "./src/modules/admin/adminPayment.routes.js";
+import adminReportRoutes from "./src/modules/admin/adminReport.routes.js";
+import adminUserRoutes from "./src/modules/admin/adminUser.routes.js";
+import adminTicketVerificationRoutes from "./src/modules/admin/adminTicketVerification.routes.js";
 
 // Admin DropdownMenu Routes
-import adminFeedbackRoutes from "./routes/admin/adminFeedbackRoutes.js"
-import adminNotificationRoutes from "./routes/admin/adminNotificationRoutes.js";
-import adminAppearanceRoutes from "./routes/admin/adminAppearanceRoutes.js";
+import adminFeedbackRoutes from "./src/modules/admin/adminFeedback.routes.js"
+import adminNotificationRoutes from "./src/modules/admin/adminNotification.routes.js";
+import adminAppearanceRoutes from "./src/modules/admin/adminAppearance.routes.js";
 
 const app = express();
 
@@ -45,6 +44,10 @@ app.use(
 );
 
 // Session-Cookie Middleware
+const SESSION_IDLE_TIMEOUT =
+  Number(process.env.SESSION_IDLE_TIMEOUT_MS) ||
+  60 * 60 * 1000; // 1 hour by default
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -52,14 +55,43 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
+      ttl: SESSION_IDLE_TIMEOUT / 1000,
     }),
+    name: "connect.sid",
+    rolling: true,
     cookie: {
       secure: false,
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24,
+      sameSite: "lax",
+      maxAge: SESSION_IDLE_TIMEOUT,
     },
   })
 );
+
+app.use((req, res, next) => {
+  if (req.session) {
+    const now = Date.now();
+    const lastActivity = req.session.lastActivity || now;
+
+    if (now - lastActivity > SESSION_IDLE_TIMEOUT) {
+      return req.session.destroy((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.clearCookie("connect.sid", {
+          path: "/",
+          httpOnly: true,
+          sameSite: "lax",
+        });
+        next();
+      });
+    }
+
+    req.session.lastActivity = now;
+  }
+
+  next();
+});
 
 //  Admin Middleware
 app.use("/api/admin", adminRoutes);

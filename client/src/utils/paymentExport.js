@@ -1,7 +1,17 @@
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
+
+let jsPDF = null;
+let autoTable = null;
+
+async function loadPdfLibs() {
+  if (!jsPDF || !autoTable) {
+    const pdfModule = await import("jspdf");
+    const autoTableModule = await import("jspdf-autotable");
+    jsPDF = pdfModule.default;
+    autoTable = autoTableModule.default;
+  }
+}
 
 const prepareExportData = (payments = []) =>
     payments.map((payment) => ({

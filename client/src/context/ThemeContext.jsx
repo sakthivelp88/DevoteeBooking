@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, } from "react";
 
-import { getTheme, updateTheme, } from "@/services/admin/adminThemeService";
+import { getTheme, updateTheme, } from "@/features/admin/services/adminThemeService";
 
 const ThemeContext = createContext();
 
@@ -46,7 +46,7 @@ export const ThemeProvider = ({ children }) => {
             setTheme(savedTheme);
             applyTheme(savedTheme);
         } catch (err) {
-            console.log(err);
+            console.error(err);
             const savedTheme = localStorage.getItem("admin-theme") || "light";
             setTheme(savedTheme);
             applyTheme(savedTheme);
@@ -62,7 +62,7 @@ export const ThemeProvider = ({ children }) => {
         try {
             await updateTheme(newTheme);
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     };
 
