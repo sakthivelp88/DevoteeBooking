@@ -1,14 +1,12 @@
 import { createContext, useContext, useEffect, useState, } from "react";
 
-import { getTheme, updateTheme, } from "@/services/user/appearanceService";
+import { getTheme, updateTheme, } from "@/features/user/services/appearanceService";
 
 const ThemeContext = createContext();
 
 // export const useTheme = () => useContext(ThemeContext);
 export const useTheme = () => {
     const context = useContext(ThemeContext);
-
-    console.log("Theme Context:", context);
 
     if (!context) {
         throw new Error("useTheme must be used inside UserThemeProvider");
@@ -51,14 +49,26 @@ export const UserThemeProvider = ({ children }) => {
     };
 
     const loadTheme = async () => {
-        try {
-            const res = await getTheme();
-            const savedTheme = res?.data?.theme || localStorage.getItem("app-theme") || "light";
+        const savedTheme = localStorage.getItem("app-theme") || "light";
+        const hasLocalUser = !!localStorage.getItem("user");
+
+        // For logged-out users, keep local theme and skip authenticated API request.
+        if (!hasLocalUser) {
             setTheme(savedTheme);
             applyTheme(savedTheme);
+            setLoading(false);
+            return;
+        }
+
+        try {
+            const res = await getTheme();
+            const remoteTheme = res?.data?.theme || savedTheme;
+            setTheme(remoteTheme);
+            applyTheme(remoteTheme);
         } catch (err) {
-            console.log(err);
-            const savedTheme = localStorage.getItem("app-theme") || "light";
+            if (err?.response?.status !== 401) {
+                console.error(err);
+            }
             setTheme(savedTheme);
             applyTheme(savedTheme);
         } finally {
@@ -73,7 +83,9 @@ export const UserThemeProvider = ({ children }) => {
         try {
             await updateTheme(newTheme);
         } catch (err) {
-            console.log(err);
+            if (err?.response?.status !== 401) {
+                console.error(err);
+            }
         }
     };
 

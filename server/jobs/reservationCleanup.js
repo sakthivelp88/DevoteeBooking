@@ -29,7 +29,4 @@ cron.schedule("* * * * *", async () => {
     await reservation.save();
   }
 
-  console.log(
-    "Expired reservations cleaned"
-  );
 });

@@ -12,6 +12,32 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@services": path.resolve(__dirname, "./src/services"),
       "@context": path.resolve(__dirname, "./src/context"),
+      "@features": path.resolve(__dirname, "./src/features"),
+      "@shared": path.resolve(__dirname, "./src/shared"),
+    },
+  },
+  build: {
+    chunkSizeWarningLimit: 1200,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("react") || id.includes("react-dom")) {
+              return "vendor-react";
+            }
+            if (id.includes("jspdf") || id.includes("html2canvas") || id.includes("xlsx") || id.includes("file-saver")) {
+              return "vendor-docs";
+            }
+            if (id.includes("recharts")) {
+              return "vendor-charts";
+            }
+            if (id.includes("lucide-react") || id.includes("react-icons")) {
+              return "vendor-icons";
+            }
+            return "vendor";
+          }
+        },
+      },
     },
   },
   server: {

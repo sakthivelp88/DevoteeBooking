@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 
-import adminReportService from "@services/admin/adminReportService";
+import adminReportService from "@/features/admin/services/adminReportService";
 
 import BookingFilters from "./BookingFilters";
 import BookingReportTable from "./BookingReportTable";
